@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+.helpcenter-box {
+	padding: 10px;
+}
+
+.helpcenter-li {
+	margin-top: 10px;
+}
+
+.helpcenter-li:nth-child(1) {
+	margin-top: 0;
+}
+
+.helpcenter-li .helpcenter-title-box {
+	border: 1px solid #dddddd;
+	background: #fafafa;
+	padding: 10px 25px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	position: relative;
+}
+
+.helpcenter-title-box .triangle {
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 8px solid #777777;
+	position: absolute;
+	left: 12px;
+	top: 15px;
+}
+
+.helpcenter-title-box .helpcenter-title {
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.hidden-content-box {
+	-webkit-transition: height 0.5s;
+	transition: height 0.5s;
+	height: 0;
+	overflow: hidden;
+	/*border: 1px solid #dddddd;*/
+	/*border-top: none;*/
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.helpcenter-li .helpcenter-content-box {
+	background: #ffffff;
+	padding: 10px 25px;
+	position: relative;
+}
+
+.helpcenter-content-box .helpcenter-content {
+	font-size: 14px;
+	line-height: 22px;
+}

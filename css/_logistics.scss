@@ -1,0 +1,190 @@
+@charset "utf-8";
+
+.log-body {
+	margin: 10px 5px;
+	border: 2px solid #f8be02;
+	padding: 10px 10px 20px 13px;
+}
+
+/*@font-face {*/
+	/*font-family: 'AmplitudeWide-Ultra';*/
+	/*src: url(../fonts/AmplitudeWide-Ultra.ttf) format("truetype");*/
+/*}*/
+
+/*@font-face {*/
+	/*font-family: 'FZLTTHJW';*/
+	/*src: url(../fonts/FZLTTHJW.TTF) format("truetype");*/
+/*}*/
+
+/* 客户信息 */
+/*.AmplitudeWide {*/
+	/*font-family: AmplitudeWide-Ultra;*/
+/*}*/
+
+/*.FZLTTHJW {*/
+	/*font-family: FZLTTHJW;*/
+/*}*/
+
+.user-info-box {
+	width: 100%;
+}
+
+.user-info-box .user-name {
+	//margin-left: -3px;
+	font-size: 32px;
+	line-height: 36px;
+	color: #f8be02;
+	font-weight: bold;
+}
+
+.user-info-box .user-tel {
+	font-size: 14px;
+	line-height: 22px;
+	font-weight: bold;
+}
+
+.user-info-box .user-state {
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.user-info-box .user-info-bar {
+	display: block;
+	width: 15px;
+	height: 2px;
+	margin: 3px 0;
+	background: #000000;
+}
+
+.user-info-box .user-address {
+	font-size: 14px;
+	line-height: 20px;
+}
+
+/* 订单信息 */
+.order-info-box {
+	position: relative;
+	margin-top: 34px;
+}
+
+.order-info-box .order-date {
+	font-size: 12px;
+	line-height: 12px;
+}
+
+.order-info-box .order-time {
+	font-size: 12px;
+	line-height: 22px;
+}
+
+.order-info-box .order-status {
+	margin-top: 6px;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.order-info-box .order-number {
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.order-info-box .order-company {
+	position: absolute;
+	right: 0;
+	bottom: 52px;
+	max-width: 80px;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.order-info-box .log-track {
+	margin-top: 30px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+/* 物流信息 */
+.log-info-box {
+	margin-top: 30px;
+}
+
+.log-li-box {
+	position: relative;
+}
+
+.log-li-box .log-div-box {
+	background: #ffffff;
+}
+
+.log-div-box .log-extra-bar {
+	position: absolute;
+	top: 50px;
+	left: 14px;
+	width: 3px;
+	height: auto;
+	background: #f8be02;
+}
+
+.log-div-box .log-icon {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50px;
+	height: 50px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: 50px 50px;
+}
+
+.log-div-box .log-text {
+	padding: 4px 0 2px 50px;
+	font-size: 14px;
+	line-height: 22px;
+	color: #b5b5b6;
+}
+
+.log-text .log-info-now {
+	word-break: break-all;
+}
+
+.log-text .log-time-now {
+	//text-indent: 0.5em;
+}
+
+.vertical-bars {
+	width: 3px;
+	height: 36px;
+	margin-left: 14px;
+}
+
+.vertical-bars span:nth-of-type(1) {
+	display: block;
+	width: 3px;
+	height: 25px;
+	background: #f8be02;
+}
+
+.vertical-bars span:nth-of-type(2) {
+	display: block;
+	width: 3px;
+	height: 9px;
+	background: #f8be02;
+	margin-top: 2px;
+}
+
+.log-li-box:nth-child(1) .log-text {
+	color: #f8be02;
+}
+
+.log-li-box:nth-last-child(1) .vertical-bars {
+	display: none;
+}
+
+.log-li-box:nth-last-child(1) .log-extra-bar {
+	display: none;
+}
+
+.log-info-now a {
+	color: #0000ff;
+}

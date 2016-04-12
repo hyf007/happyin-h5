@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+/* banner样式 */
+.banner-box {
+	/*background-color: black;*/
+	width: 100%;
+	position:relative;
+	display: inline-block;
+
+	.banner-tent {
+		margin-top: 64%;
+	}
+
+	.banner-content {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		overflow: hidden;
+	}
+}
+
+/* 填入手机号样式 */
+.phonenumber-box {
+	width: 300px;
+	height: 200px;
+	margin: 0 auto;
+
+	.input-phonenumber {
+		display: block;
+		width: 200px;
+		height: 30px;
+		border: 1px solid #000000;
+		font-size: 16px;
+		line-height: 30px;
+		text-align: center;
+		margin: 20px auto;
+
+		&:-ms-input-placeholder {
+			text-align: center
+		}
+
+		&::-webkit-input-placeholder {
+			text-align: center
+		}
+	}
+
+	.receive-btn {
+		display: block;
+		width: 198px;
+		height: 28px;
+		border: 1px solid #000;
+		border-radius: 5px;
+		line-height: 28px;
+		text-align: center;
+		font-size: 16px;
+		margin: 0 auto;
+	}
+}
+
+/* 活动规则样式 */
+.ruler-box {
+	font-size: 14px;
+
+	h5 {
+		text-align: center;
+		font-size: 16px;
+		line-height: 32px;
+	}
+
+	p {
+		line-height: 20px;
+		margin: 0 30px;
+	}
+}
+
+/* 好友分享样式 */
+.friends-share-box {
+	width: 300px;
+	height: 400px;
+	margin: 20px auto 0;
+	font-size: 14px;
+	line-height: 100%;
+
+	.friends-share-title {
+		text-align: center;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 30px;
+	}
+
+	.friend-box {
+		width: 300px;
+		height: 40px;
+		margin-bottom: 10px;
+
+		.friend-image {
+			width: 40px;
+			height: 40px;
+			float: left;
+		}
+
+		.friend-assess {
+			width: 210px;
+			height: 40px;
+			float: left;
+			padding-left: 10px;
+
+			.friend-nameandtime {
+				line-height: 20px;
+
+				.friend-name {
+					float: left;
+				}
+
+				.friend-time {
+					float: left;
+					margin-left: 10px;
+				}
+			}
+
+			.friend-thanksword {
+				line-height: 20px;
+				font-size: 12px;
+			}
+		}
+
+		.friend-receive-number {
+			float: right;
+			width: 40px;
+			height: 40px;
+			text-align: right;
+			line-height: 40px;
+		}
+	}
+}
+
+
+
+
+
+
