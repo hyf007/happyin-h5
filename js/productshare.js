@@ -6,9 +6,10 @@
 $(function(){
 	$(".flexslider").flexslider({
 		animation: 'slide',
+		slideshow: false,
 		slideshowSpeed: '3000',
 		directionNav: false,
-		keyboard: false,
+		keyboard: false
 	});
-})
+});
 

@@ -1,0 +1,125 @@
+@charset "utf-8";
+
+@function rem($px) {
+	@return $px*(1/10)*1rem;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+@font-face {
+	font-family: 'AmplitudeWide-Ultra';
+	src: url('../fonts/AmplitudeWide-Ultra.ttf') format("truetype");
+}
+
+.ps-cover-box {
+	width: 100%;
+	padding-top: 75%;
+	position: relative;
+
+	.ps-cover-back {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		overflow: hidden;
+	}
+}
+
+.ps-name-box {
+	height: rem(29);
+	background: #00a0e8;
+	position: relative;
+	margin-bottom: rem(40);
+
+	.ps-triangle {
+		width: 0;
+		height: 0;
+		border-top: rem(12) solid #00a0e8;
+		border-left: rem(12) solid transparent;
+		border-right: rem(12) solid transparent;
+		position: absolute;
+		bottom: rem(-12);
+		left: rem(33);
+	}
+
+	.ps-name {
+		font-size: rem(34);
+		font-weight: bold;
+		line-height: rem(34);
+		position: absolute;
+		left: rem(10);
+		bottom: rem(10);
+	}
+
+	.ps-size-case {
+		font-family: 'AmplitudeWide-Ultra';
+		font-size: rem(12);
+		font-weight: bold;
+		height: rem(12);
+		line-height: rem(12);
+		position: absolute;
+		right: rem(25);
+		bottom: rem(6);
+		overflow: hidden;
+	}
+
+	.ps-refresh-btn {
+		display: block;
+		width: rem(10);
+		height: rem(12);
+		background: url("../images/refresh_icon.png") no-repeat 0 0;
+		background-size: rem(10) rem(12);
+		position: absolute;
+		right: rem(10);
+		bottom: rem(8);
+	}
+}
+
+.ps-info-box {
+	position: relative;
+	margin-bottom: rem(40);
+
+	.ps-cost {
+		position: absolute;
+		left: rem(10);
+		top: rem(10);
+		font-size: rem(26);
+		font-weight: bold;
+		line-height: rem(26);
+		color: #34abea;
+
+		i {
+			font-family: 'AmplitudeWide-Ultra';
+			font-size: rem(50);
+			font-weight: bold;
+		}
+	}
+
+	.ps-info {
+		margin-left: rem(140);
+		margin-right: rem(20);
+		font-size: rem(12);
+		line-height: rem(18);
+		color: #acacac;
+	}
+}
+
+.ps-downloadbtn {
+	display: block;
+	position: fixed;
+	left: 50%;
+	bottom: rem(36);
+	width: rem(120);
+	font-size: rem(15);
+	line-height: rem(35);
+	text-align: center;
+	border-radius: rem(18);
+	color: #ffffff;
+	background: #00a0e8;
+	margin-left: rem(-60);
+}
+
+

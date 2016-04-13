@@ -2,6 +2,9 @@
 
 var pokoConsole = true;
 
+var screenWidth = $(window).width();  //屏幕宽度
+var screenHeight = $(window).height(); //屏幕高度
+
 // 获取查询字符串参数
 function getQueryStringArgs() {
 	var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
@@ -33,7 +36,7 @@ function checkTel(str, str2) {
 			if( (!isNaN(arr[1][i]) && arr[1][i] != ' ') || (arr[1][i] == '-' && !isNaN(arr[1][i+1]) && arr[1][i+1] != ' ') ){
 				n.push(arr[1][i]);
 			} else {
-				var result = ''+arr[0] + str2 + '：<a href="#">'+n.join('')+'</a>' + str.slice(arr[0].length+n.length+3, str.length);
+				var result = ''+arr[0] + str2 + '：<a href="tel:'+n.join('')+'">'+n.join('')+'</a>' + str.slice(arr[0].length+n.length+3, str.length);
 				return result;
 			}
 		}
@@ -41,12 +44,11 @@ function checkTel(str, str2) {
 }
 
 
-
-
 $(function(){
+	$('.log-body').css('min-height',(screenHeight-54) + 'px');
 	$.ajax({
 		url: 'http://app.himoca.com:9964/Catalog/Express/traces',
-		//url: urlProtocol + urlConfig.init_domain + '/Catalog/Express/traces',
+		//url: location.protocol + '//' + location.host + '/Catalog/Express/traces',
 		dataType: 'json',
 		data: {
 			order_id: getQueryStringArgs().orderId
@@ -59,8 +61,7 @@ $(function(){
 			if (d.c == 200) {
 				$('.user-name').html(d.p.shipping_firstname);	//姓名
 				$('.user-tel').html(d.p.telephone);		//电话
-				$('.user-state').find('i').eq(0).html(d.p.shipping_country);	//国家
-				$('.user-state').find('i').eq(1).html(d.p.shipping_city);	//城市
+				$('.user-state').find('i').eq(0).html(d.p.shipping_country).parent().find('i').eq(1).html(d.p.shipping_city);	//国家and城市
 				$('.user-address').html(d.p.shipping_address_1);	//地址
 
 				var orderDateTime = d.p.date_added.split(' ');
@@ -96,14 +97,19 @@ $(function(){
 							$(domEle).find('.log-extra-bar').css('height',(domHeight-50) + 'px');
 						}
 					});
+				}else {
+					$('.log-ul-box').css('display','none');
+					$('.log-no-info').css('display','block');
 				}
 
 			}else {
+				$('.log-body').css('display','none');
 				alert('获取失败，请稍后再试。(e:10001)');
 			}
 		},
 		error: function(e){
-			alert(JSON.stringify(e));
+			$('.log-body').css('display','none');
+			alert('获取失败，请稍后再试。(e:10002)');
 		}
 	})
 });

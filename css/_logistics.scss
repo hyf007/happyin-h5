@@ -30,7 +30,7 @@
 }
 
 .user-info-box .user-name {
-	//margin-left: -3px;
+	margin-bottom: 6px;
 	font-size: 32px;
 	line-height: 36px;
 	color: #f8be02;
@@ -188,3 +188,16 @@
 .log-info-now a {
 	color: #0000ff;
 }
+
+.log-no-info {
+	display: none;
+	font-size: 14px;
+	text-align: center;
+	margin: 20px 0;
+	line-height: 20px;
+	color: #b5b5b6;
+}
+
+
+
+
