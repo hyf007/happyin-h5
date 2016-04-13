@@ -47,8 +47,7 @@ function checkTel(str, str2) {
 $(function(){
 	$('.log-body').css('min-height',(screenHeight-54) + 'px');
 	$.ajax({
-		url: 'http://app.himoca.com:9964/Catalog/Express/traces',
-		//url: location.protocol + '//' + location.host + '/Catalog/Express/traces',
+		url: location.protocol + '//' + location.host + '/Catalog/Express/traces',
 		dataType: 'json',
 		data: {
 			order_id: getQueryStringArgs().orderId
