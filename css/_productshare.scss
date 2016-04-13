@@ -58,12 +58,23 @@ html {
 		font-family: 'AmplitudeWide-Ultra';
 		font-size: rem(12);
 		font-weight: bold;
-		height: rem(12);
-		line-height: rem(12);
+		height: rem(14);
+		line-height: rem(14);
 		position: absolute;
 		right: rem(25);
 		bottom: rem(6);
 		overflow: hidden;
+
+		.ps-size-box {
+			-webkit-transform: translate3d(0,0,0);
+			transform: translate3d(0,0,0);
+			-webkit-transition: all 0.5s;
+			transition: all 0.5s;
+
+			p {
+				text-align: right;
+			}
+		}
 	}
 
 	.ps-refresh-btn {
@@ -75,6 +86,10 @@ html {
 		position: absolute;
 		right: rem(10);
 		bottom: rem(8);
+		-webkit-transform: rotateZ(0deg);
+		transform: rotateZ(0deg);
+		-webkit-transition: all 0.5s;
+		transition: all 0.5s;
 	}
 }
 
@@ -83,9 +98,10 @@ html {
 	margin-bottom: rem(40);
 
 	.ps-cost {
-		position: absolute;
-		left: rem(10);
-		top: rem(10);
+		float: left;
+		max-width: 50%;
+		word-break: break-all;
+		margin: rem(-2) rem(6) 0;
 		font-size: rem(26);
 		font-weight: bold;
 		line-height: rem(26);
@@ -94,16 +110,18 @@ html {
 		i {
 			font-family: 'AmplitudeWide-Ultra';
 			font-size: rem(50);
+			line-height: rem(50);
 			font-weight: bold;
 		}
 	}
 
-	.ps-info {
-		margin-left: rem(140);
+	.ps-desc {
+		word-break: break-all;
 		margin-right: rem(20);
 		font-size: rem(12);
 		line-height: rem(18);
 		color: #acacac;
+		overflow: hidden;
 	}
 }
 
