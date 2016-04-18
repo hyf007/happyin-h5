@@ -15,7 +15,7 @@ html {
 
 .ps-cover-box {
 	width: 100%;
-	padding-top: 75%;
+	padding-top: 85.9375%;
 	position: relative;
 
 	.ps-cover-back {
@@ -28,116 +28,80 @@ html {
 	}
 }
 
-.ps-name-box {
-	height: rem(29);
-	background: #00a0e8;
+.ps-info-box {
+	height: rem(38);
 	position: relative;
-	margin-bottom: rem(40);
+	padding: rem(11) rem(13);
+	color: #ffffff;
 
-	.ps-triangle {
-		width: 0;
-		height: 0;
-		border-top: rem(12) solid #00a0e8;
-		border-left: rem(12) solid transparent;
-		border-right: rem(12) solid transparent;
-		position: absolute;
-		bottom: rem(-12);
-		left: rem(33);
+	.ps-name-box {
+		float: left;
+
+		.ps-enname {
+			font-family: 'AmplitudeWide-Ultra';
+			font-size: rem(25);
+			line-height: rem(25);
+			margin-top: rem(-4);
+		}
+
+		.ps-chname {
+			font-size: rem(13);
+			font-weight: bold;
+			line-height: rem(17);
+		}
 	}
 
-	.ps-name {
-		font-size: rem(34);
-		font-weight: bold;
-		line-height: rem(34);
-		position: absolute;
-		left: rem(10);
-		bottom: rem(10);
-	}
+	.ps-cost-box {
+		float: right;
 
-	.ps-size-case {
-		font-family: 'AmplitudeWide-Ultra';
-		font-size: rem(12);
-		font-weight: bold;
-		height: rem(14);
-		line-height: rem(14);
-		position: absolute;
-		right: rem(25);
-		bottom: rem(6);
-		overflow: hidden;
+		.ps-cost {
+			font-family: 'AmplitudeWide-Ultra';
+			font-size: rem(20);
+			line-height: rem(38);
 
-		.ps-size-box {
-			-webkit-transform: translate3d(0,0,0);
-			transform: translate3d(0,0,0);
-			-webkit-transition: all 0.5s;
-			transition: all 0.5s;
-
-			p {
-				text-align: right;
+			i {
+				font-size: rem(34);
+				line-height: rem(38);
 			}
 		}
 	}
-
-	.ps-refresh-btn {
-		display: block;
-		width: rem(10);
-		height: rem(12);
-		background: url("../images/refresh_icon.png") no-repeat 0 0;
-		background-size: rem(10) rem(12);
-		position: absolute;
-		right: rem(10);
-		bottom: rem(8);
-		-webkit-transform: rotateZ(0deg);
-		transform: rotateZ(0deg);
-		-webkit-transition: all 0.5s;
-		transition: all 0.5s;
-	}
 }
 
-.ps-info-box {
-	position: relative;
-	margin-bottom: rem(40);
-
-	.ps-cost {
-		float: left;
-		max-width: 50%;
-		word-break: break-all;
-		margin: rem(-2) rem(6) 0;
-		font-size: rem(26);
-		font-weight: bold;
-		line-height: rem(26);
-		color: #34abea;
-
-		i {
-			font-family: 'AmplitudeWide-Ultra';
-			font-size: rem(50);
-			line-height: rem(50);
-			font-weight: bold;
-		}
-	}
+.ps-desc-box {
+	padding: rem(14) rem(16) 0;
 
 	.ps-desc {
 		word-break: break-all;
-		margin-right: rem(20);
 		font-size: rem(12);
 		line-height: rem(18);
-		color: #acacac;
-		overflow: hidden;
+		color: #a4a4a4;
+	}
+
+	.ps-size {
+		font-family: 'AmplitudeWide-Ultra';
+		font-size: rem(12);
+		line-height: rem(20);
+		color: #a4a4a4;
 	}
 }
 
-.ps-downloadbtn {
-	display: block;
+.ps-downloadbtn-box {
 	position: fixed;
-	left: 50%;
-	bottom: rem(36);
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+}
+
+.ps-downloadbtn {
+	display: inline-block;
 	width: rem(120);
 	font-size: rem(15);
 	line-height: rem(35);
-	text-align: center;
 	border-radius: rem(18);
 	color: #ffffff;
 	background: #00a0e8;
-	margin-left: rem(-60);
+	margin-bottom: rem(28);
 }
 
 
