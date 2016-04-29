@@ -13,6 +13,7 @@
 }
 
 .helpcenter-li .helpcenter-title-box {
+	display: block;
 	border: 1px solid #dddddd;
 	background: #fafafa;
 	padding: 10px 25px;
@@ -44,7 +45,7 @@
 .hidden-content-box {
 	-webkit-transition: height 0.5s;
 	transition: height 0.5s;
-	height: 0;
+	//height: 0;
 	overflow: hidden;
 	/*border: 1px solid #dddddd;*/
 	/*border-top: none;*/

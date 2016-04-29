@@ -1,17 +1,22 @@
 @charset "utf-8";
 
+.cp-body {
+	font-size: 0;
+}
+
 /* banner样式 */
-.banner-box {
+.cp-banner-box {
 	/*background-color: black;*/
 	width: 100%;
 	position:relative;
 	display: inline-block;
+	border: 1px solid black;
 
-	.banner-tent {
+	.cp-banner-tent {
 		margin-top: 64%;
 	}
 
-	.banner-content {
+	.cp-banner-content {
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -22,12 +27,12 @@
 }
 
 /* 填入手机号样式 */
-.phonenumber-box {
+.cp-phonenumber-box {
 	width: 300px;
 	height: 200px;
 	margin: 0 auto;
 
-	.input-phonenumber {
+	.cp-input-phonenumber {
 		display: block;
 		width: 200px;
 		height: 30px;
@@ -46,7 +51,7 @@
 		}
 	}
 
-	.receive-btn {
+	.cp-receive-btn {
 		display: block;
 		width: 198px;
 		height: 28px;
@@ -59,9 +64,16 @@
 	}
 }
 
+.cp-result-box {
+	display: none;
+	font-size: 16px;
+	line-height: 20px;
+}
+
 /* 活动规则样式 */
-.ruler-box {
+.cp-ruler-box {
 	font-size: 14px;
+	border: 1px solid black;
 
 	h5 {
 		text-align: center;

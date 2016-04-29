@@ -100,14 +100,12 @@ $(function(){
 					$('.log-ul-box').css('display','none');
 					$('.log-no-info').css('display','block');
 				}
-
+			$('.whitecover').css('display','none');
 			}else {
-				$('.log-body').css('display','none');
 				alert('获取失败，请稍后再试。(e:10001)');
 			}
 		},
 		error: function(e){
-			$('.log-body').css('display','none');
 			alert('获取失败，请稍后再试。(e:10002)');
 		}
 	})

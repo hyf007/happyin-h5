@@ -10,21 +10,28 @@
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/coupon.js"></script>
 </head>
-<body>
+<body class="cp-body">
 	<!--标题img-->
-	<div class="banner-box">
-		<div class="banner-tent"></div>
-		<div class="banner-content"></div>
+	<div class="cp-banner-box">
+		<div class="cp-banner-tent"></div>
+		<div class="cp-banner-content"></div>
 	</div>
 
 	<!--填入手机号-->
-	<div class="phonenumber-box">
-		<input class="input-phonenumber" type="text" placeholder="输入手机号领取优惠码">
-		<a href="javascript:;" class="receive-btn">领取</a>
+	<div class="cp-phonenumber-box">
+		<input class="cp-input-phonenumber" type="text" placeholder="输入手机号领取优惠码" maxlength="11">
+		<a href="javascript:;" class="cp-receive-btn">领取</a>
+	</div>
+
+	<!--奖励展示部分-->
+	<div class="cp-result-box">
+		<p>20张</p>
+		<p>兑换码：1234567890</p>
+		<p>有效期：</p>
 	</div>
 
 	<!--活动规则-->
-	<div class="ruler-box">
+	<div class="cp-ruler-box">
 		<h5>活动规则</h5>
 		<p>1.礼包发放完毕，即可获得终身免费冲印照片</p>
 		<p>2.使用抢红包时的手机号登录，即可使用优惠券</p>

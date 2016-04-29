@@ -44,8 +44,8 @@ function getQueryStringArgs() {
 }
 
 //var redirectUrl =  location.protocol + '//' + location.host + location.pathname;
-//var redirectUrl = 'http://api.himoca.com/order/coupon.html';
-var redirectUrl = 'http://www.himoca.com/';
+var redirectUrl = 'http://app.himoca.com/order/coupon.html';
+//var redirectUrl = 'http://www.himoca.com/';
 $(function () {
 	if(environment.isQq) {
 		alert(redirectUrl);
@@ -63,20 +63,25 @@ $(function () {
 		//alert(appId);
 		if (!environment.isLogin) {
 			//alert(2);
-			location.href = location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appId + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+			location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appId + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 		}else if(environment.isLogin) {
-			alert(getQueryStringArgs().code);
+			//alert(getQueryStringArgs().code);
 			//location.href = 'http://app.himoca.com:9967/Catalog/User/webRegister?type=0&code=' + getQueryStringArgs().code;
 			$.ajax({
-				url: 'http://app.himoca.com:9967/Catalog/User/webRegister',
+				url: 'http://app.himoca.com/Catalog/User/webRegister',
 				dataType: 'json',
 				data: {
 					type: 0,
-					code: getQueryStringArgs().code
+					code: getQueryStringArgs().code,
+					ident: 'a1871a'
 				},
 				success: function(d){
-					alert('成功');
+					//alert('成功');
 					alert(JSON.stringify(d));
+					if (d.c == 200) {
+						buildDom(d.p);
+					}
+
 				},
 				error: function(e){
 					alert('失败');
@@ -88,3 +93,28 @@ $(function () {
 
 	}
 });
+
+var inputTelephone = 13811708195;
+function buildDom(data){
+	$('.cp-receive-btn').on('click',function(){
+		alert(inputTelephone);
+		//var inputTelephone = $('.cp-input-phonenumber').val();
+		$.ajax({
+			url: 'http://app.himoca.com/Catalog/User/webRegister',
+			dataType: 'json',
+			type: 'POST',
+			data: {
+				ident: 'a1871a',
+				token: data.token,
+				telephone: inputTelephone
+			},
+			success: function(d){
+				alert(JSON.stringify(d));
+			},
+			error: function(e){
+				alert(JSON.stringify(e));
+			}
+
+		})
+	})
+}
