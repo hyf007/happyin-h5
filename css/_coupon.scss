@@ -1,153 +1,140 @@
 @charset "utf-8";
 
-.cp-body {
+@function rem($px) {
+	@return $px*(1/10)*1rem;
+}
+
+.cp-back-receive {
+	position: relative;
+	font-size: 0;
+
+	.cp-input {
+		background: rgba(0,0,0,0);
+		width: rem(240);
+		height: rem(27);
+		position: absolute;
+		top: rem(352);
+		left: rem(47);
+		text-align: center;
+		font-size: rem(16);
+		line-height: rem(27);
+		font-weight: bold;
+	}
+
+	.cp-btn-box {
+		width: rem(116);
+		position: absolute;
+		left: 50%;
+		top: rem(398);
+		margin-left: rem(-60);
+
+		.cp-btn {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
+			-webkit-transform: scale3d(1,1,1);
+			transform: scale3d(1,1,1);
+		}
+	}
+}
+
+.cp-back-friends {
+	display: none;
+	font-size: 0;
+
+	.cp-back-friendstop {
+		position: relative;
+		z-index: 1;
+	}
+
+	.cp-friends-list {
+		background: url("../images/coupon_borderimg_02.jpg") repeat-y 0 0;
+		background-size: 100%;
+		position: relative;
+		z-index: 2;
+
+	}
+
+	.cp-back-friendsbottom {
+		position: relative;
+		z-index: 1;
+	}
+}
+
+ul {
+	margin: rem(-15) rem(37) rem(-15);
+
+	li:nth-child(1) {
+		margin-top: 0;
+	}
+
+	li {
+		margin-top: rem(10);
+		font-weight: bold;
+
+		.cp-friendimg-box {
+			float: left;
+			width: rem(43);
+			height: rem(41);
+			position: relative;
+
+			img {
+				width: rem(30);
+				height: rem(30);
+				position: absolute;
+				left: rem(6);
+				top: rem(6);
+				z-index: 1;
+			}
+
+			.cp-friendimg-cover {
+				width: rem(43);
+				height: rem(41);
+				background: url("../images/coupon-userimg-border.png") no-repeat 0 0;
+				background-size: rem(43) rem(41);
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 10;
+			}
+		}
+
+		.cp-friendtext-box {
+			float: left;
+			margin: rem(7) 0 0 rem(7);
+
+			.cp-friend-nameanddate {
+				font-size: rem(10);
+				line-height: rem(14);
+
+				i {
+					color: #ffffff;
+				}
+			}
+
+			.cp-friend-content {
+				font-size: rem(10);
+				line-height: rem(14);
+			}
+		}
+
+		.cp-friend-num {
+			float: right;
+			margin-top: rem(20);
+			font-size: rem(12);
+			line-height: rem(16);
+		}
+	}
+}
+
+
+.cp-back-spread {
+	position: relative;
 	font-size: 0;
 }
-
-/* banner样式 */
-.cp-banner-box {
-	/*background-color: black;*/
-	width: 100%;
-	position:relative;
-	display: inline-block;
-	border: 1px solid black;
-
-	.cp-banner-tent {
-		margin-top: 64%;
-	}
-
-	.cp-banner-content {
-		position: absolute;
-		left: 0;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		overflow: hidden;
-	}
-}
-
-/* 填入手机号样式 */
-.cp-phonenumber-box {
-	width: 300px;
-	height: 200px;
-	margin: 0 auto;
-
-	.cp-input-phonenumber {
-		display: block;
-		width: 200px;
-		height: 30px;
-		border: 1px solid #000000;
-		font-size: 16px;
-		line-height: 30px;
-		text-align: center;
-		margin: 20px auto;
-
-		&:-ms-input-placeholder {
-			text-align: center
-		}
-
-		&::-webkit-input-placeholder {
-			text-align: center
-		}
-	}
-
-	.cp-receive-btn {
-		display: block;
-		width: 198px;
-		height: 28px;
-		border: 1px solid #000;
-		border-radius: 5px;
-		line-height: 28px;
-		text-align: center;
-		font-size: 16px;
-		margin: 0 auto;
-	}
-}
-
-.cp-result-box {
-	display: none;
-	font-size: 16px;
-	line-height: 20px;
-}
-
-/* 活动规则样式 */
-.cp-ruler-box {
-	font-size: 14px;
-	border: 1px solid black;
-
-	h5 {
-		text-align: center;
-		font-size: 16px;
-		line-height: 32px;
-	}
-
-	p {
-		line-height: 20px;
-		margin: 0 30px;
-	}
-}
-
-/* 好友分享样式 */
-.friends-share-box {
-	width: 300px;
-	height: 400px;
-	margin: 20px auto 0;
-	font-size: 14px;
-	line-height: 100%;
-
-	.friends-share-title {
-		text-align: center;
-		font-weight: bold;
-		font-size: 16px;
-		line-height: 30px;
-	}
-
-	.friend-box {
-		width: 300px;
-		height: 40px;
-		margin-bottom: 10px;
-
-		.friend-image {
-			width: 40px;
-			height: 40px;
-			float: left;
-		}
-
-		.friend-assess {
-			width: 210px;
-			height: 40px;
-			float: left;
-			padding-left: 10px;
-
-			.friend-nameandtime {
-				line-height: 20px;
-
-				.friend-name {
-					float: left;
-				}
-
-				.friend-time {
-					float: left;
-					margin-left: 10px;
-				}
-			}
-
-			.friend-thanksword {
-				line-height: 20px;
-				font-size: 12px;
-			}
-		}
-
-		.friend-receive-number {
-			float: right;
-			width: 40px;
-			height: 40px;
-			text-align: right;
-			line-height: 40px;
-		}
-	}
-}
-
 
 
 

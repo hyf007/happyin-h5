@@ -1,6 +1,7 @@
 ﻿'use strict';
 
-
+var screenWidth = $(window).width();  //屏幕宽度
+var screenHeight = $(window).height(); //屏幕高度
 
 var ua = navigator.userAgent;
 var environment = {
@@ -47,6 +48,12 @@ function getQueryStringArgs() {
 var redirectUrl = 'http://app.himoca.com/order/coupon.html';
 //var redirectUrl = 'http://www.himoca.com/';
 $(function () {
+	var per = screenWidth/320;
+	$('html').css('font-size', (0.625 * per) * 100 + '%');
+
+
+
+	//QQ登陆
 	if(environment.isQq) {
 		alert(redirectUrl);
 		alert(appId);
@@ -58,6 +65,7 @@ $(function () {
 		}
 
 	}
+	//微信登陆
 	if(environment.isWeixin) {
 		//alert(redirectUrl);
 		//alert(appId);
@@ -77,7 +85,8 @@ $(function () {
 				},
 				success: function(d){
 					//alert('成功');
-					alert(JSON.stringify(d));
+					//alert(JSON.stringify(d));
+					console.log(d);
 					if (d.c == 200) {
 						buildDom(d.p);
 					}
@@ -94,11 +103,34 @@ $(function () {
 	}
 });
 
-var inputTelephone = 13811708195;
+//var inputTelephone = 13811708195;
 function buildDom(data){
-	$('.cp-receive-btn').on('click',function(){
+	if (data.list != '') {
+		for(var i=0; i<data.list.length; i++) {
+			var index = data.list[i];
+			$('.cp-friends-ul').append('' +
+				'<li class="clearfix">' +
+					'<div class="cp-friendimg-box">' +
+						'<img alt="" src="'+ index.avatar +'">' +
+						'<div class="cp-friendimg-cover"></div>' +
+					'</div>' +
+					'<div class="cp-friendtext-box">' +
+						'<p class="cp-friend-nameanddate">'+ index.name +' <i>0000.0.0 00:00</i></p>' +
+						'<p class="cp-friend-content">'+ index.desc +'</p>' +
+					'</div>' +
+					'<p class="cp-friend-num">'+ index.count +'张</p>' +
+				'</li>');
+		}
+		$('.cp-friends-list').css('display','block');
+	}
+
+
+	$('.cp-btn').on('touchstart',function(){
+		$('.cp-btn-box').css({'-webkit-transform':'scale3d(0.97,0.97,1)','transform':'scale3d(0.97,0.97,1)'});
+	}).on('touchend',function(){
+		$('.cp-btn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
+		var inputTelephone = $('.cp-input').val();
 		alert(inputTelephone);
-		//var inputTelephone = $('.cp-input-phonenumber').val();
 		$.ajax({
 			url: 'http://app.himoca.com/Catalog/User/webRegister',
 			dataType: 'json',
@@ -116,5 +148,6 @@ function buildDom(data){
 			}
 
 		})
-	})
+
+	});
 }
