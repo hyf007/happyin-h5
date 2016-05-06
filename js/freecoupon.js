@@ -3,6 +3,14 @@
  */
 'use strict';
 
+var screenWidth = $(window).width();  //屏幕宽度
+var screenHeight = $(window).height(); //屏幕高度
+
+$(function(){
+	var per = screenWidth/320;
+	$('html').css('font-size', (0.625 * per) * 100 + '%');
+});
+
 //获取查询字符串参数
 function getQueryStringArgs() {
 	var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
@@ -24,7 +32,7 @@ function getQueryStringArgs() {
 	return args;
 }
 
-var login_uid = getQueryStringArgs().login_uid;
+var login_uid = '';
 var info = '';
 
 function connectWebViewJavascriptBridge(callback) {
@@ -41,6 +49,16 @@ connectWebViewJavascriptBridge(function(bridge) {
 	bridge.init();
 
 	$(function(){
+		bridge.callHandler('UserInfo',{},function(d){
+			if(typeof d === 'string') {
+				var d = JSON.parse(d);
+			}
+			login_uid = d.uid;
+			toGetShareLimit(login_uid);
+		});
+	});
+
+	function toGetShareLimit(login_uid) {
 		$.ajax({
 			url: 'http://app.himoca.com/Catalog/Coupon/myCoupon',
 			dataType: 'json',
@@ -63,7 +81,7 @@ connectWebViewJavascriptBridge(function(bridge) {
 				//alert(JSON.stringify(e));
 			}
 		})
-	});
+	}
 
 	function toShareFreeCoupon(shareLimit) {
 		bridge.callHandler('ShareFreeCoupon',{'share': true,'share_limit': shareLimit},function(d){
@@ -76,12 +94,14 @@ connectWebViewJavascriptBridge(function(bridge) {
 		paramsJson.type = 3;
 		paramsJson.login_uid = login_uid;
 		bridge.callHandler('CallInterface',{'url': location.href,'params': paramsJson},function(d){
-			toAlert();
+			if (d.success == true) {
+				toAlert(d.result);
+			}
 		});
 	}
 
-	function toAlert() {
-		bridge.callHandler('AlertInfo',{'info': info},function(d){
+	function toAlert(result) {
+		bridge.callHandler('AlertInfo',{'info': result},function(d){
 		});
 	}
 });

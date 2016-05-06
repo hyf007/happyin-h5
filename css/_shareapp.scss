@@ -4,22 +4,22 @@
 	@return $px*(1/10)*1rem;
 }
 
-.freecoupon-title {
+.shareapp-title {
 	font-size: 0;
 }
 
-.freecoupon-back {
+.shareapp-back {
 	position: relative;
 	font-size: 0;
 
-	.freecoupon-btn-box {
+	.shareapp-btn-box {
 		width: rem(198);
 		height: rem(54);
 		position: absolute;
 		left: rem(62);
 		top: rem(150);
 
-		.freecoupon-btn {
+		.shareapp-btn {
 			position: absolute;
 			left: 0;
 			top: 0;

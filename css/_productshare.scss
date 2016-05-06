@@ -13,6 +13,10 @@ html {
 	src: url('../fonts/AmplitudeWide-Ultra.ttf') format("truetype");
 }
 
+.ps-box {
+	margin-bottom: 45px;
+}
+
 .ps-cover-box {
 	width: 100%;
 	padding-top: 85.9375%;
@@ -88,25 +92,6 @@ html {
 		line-height: rem(20);
 		color: #a4a4a4;
 	}
-}
-
-.ps-downloadbtn-box {
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	text-align: center;
-}
-
-.ps-downloadbtn {
-	display: inline-block;
-	width: rem(120);
-	font-size: rem(15);
-	line-height: rem(35);
-	border-radius: rem(18);
-	color: #ffffff;
-	background: #00a0e8;
-	margin-bottom: rem(28);
 }
 
 

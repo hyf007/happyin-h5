@@ -45,7 +45,7 @@ function getQueryStringArgs() {
 }
 
 //var redirectUrl =  location.protocol + '//' + location.host + location.pathname;
-var redirectUrl = 'http://app.himoca.com/order/coupon.html';
+var redirectUrl = 'http://app.himoca.com/order/coupon.html' + location.search;
 //var redirectUrl = 'http://www.himoca.com/';
 $(function () {
 	var per = screenWidth/320;
@@ -81,7 +81,7 @@ $(function () {
 				data: {
 					type: 0,
 					code: getQueryStringArgs().code,
-					ident: 'a1871a'
+					ident: getQueryStringArgs().ident
 				},
 				success: function(d){
 					//alert('成功');
@@ -105,30 +105,46 @@ $(function () {
 
 //var inputTelephone = 13811708195;
 function buildDom(data){
+	if (data.self_received != false) {			//如果已领取
+		var resultText = data.self_received;
+		$('.cp-resulttext-number').html(resultText.count);
+		$('.cp-resulttext-unit').html(resultText.unit);
+		$('.cp-resulttext-content').html('无使用门槛' + resultText.count + resultText.unit + '说免费就免费');
+		$('.cp-resulttext-code').html('兑换码: ' + resultText.code);
+		$('.cp-back-result').css('display','block');
+	}else {
+		if(data.all_received == true) {
+			$('.cp-back-end').css('display','block');
+		}else {
+			$('.cp-back-receive').css('display','block');
+		}
+	}
+
 	if (data.list != '') {
 		for(var i=0; i<data.list.length; i++) {
 			var index = data.list[i];
 			$('.cp-friends-ul').append('' +
 				'<li class="clearfix">' +
 					'<div class="cp-friendimg-box">' +
+						'<img alt="" src="images/userdefaultimg.png">' +
 						'<img alt="" src="'+ index.avatar +'">' +
 						'<div class="cp-friendimg-cover"></div>' +
 					'</div>' +
 					'<div class="cp-friendtext-box">' +
-						'<p class="cp-friend-nameanddate">'+ index.name +' <i>0000.0.0 00:00</i></p>' +
+						'<p class="cp-friend-nameanddate">'+ index.name +' <i>'+ index.add_time +'</i></p>' +
 						'<p class="cp-friend-content">'+ index.desc +'</p>' +
 					'</div>' +
 					'<p class="cp-friend-num">'+ index.count +'张</p>' +
 				'</li>');
 		}
-		$('.cp-friends-list').css('display','block');
+		$('.cp-back-friends').css('display','block');
 	}
 
 
-	$('.cp-btn').on('touchstart',function(){
-		$('.cp-btn-box').css({'-webkit-transform':'scale3d(0.97,0.97,1)','transform':'scale3d(0.97,0.97,1)'});
+	$('.cp-btn-receive').on('touchstart',function(){
+		$('.cp-receivebtn-box').css({'-webkit-transform':'scale3d(0.97,0.97,1)','transform':'scale3d(0.97,0.97,1)'});
 	}).on('touchend',function(){
-		$('.cp-btn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
+		$('.cp-receivebtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
 		var inputTelephone = $('.cp-input').val();
 		alert(inputTelephone);
 		$.ajax({
@@ -136,12 +152,21 @@ function buildDom(data){
 			dataType: 'json',
 			type: 'POST',
 			data: {
-				ident: 'a1871a',
+				ident: getQueryStringArgs().ident,
 				token: data.token,
 				telephone: inputTelephone
 			},
 			success: function(d){
-				alert(JSON.stringify(d));
+				console.log(d);
+				if (d.c == 200) {
+					$('.cp-back-receive').css('display','none');
+
+					$('.cp-resulttext-number').html(d.p.count);
+					$('.cp-resulttext-unit').html(d.p.unit);
+					$('.cp-resulttext-content').html('无使用门槛' + d.p.count + d.p.unit + '说免费就免费');
+					$('.cp-resulttext-code').html('兑换码: ' + d.p.code);
+					$('.cp-back-result').css('display','block');
+				}
 			},
 			error: function(e){
 				alert(JSON.stringify(e));

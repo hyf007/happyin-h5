@@ -196,19 +196,19 @@ html[xmlns] .flexslider .slides {
 .flex-control-nav {
   width: 100%;
   position: absolute;
-  bottom: 1.7rem;     /* poko */
+  bottom: 17px;     /* poko */
   text-align: center;
-	height: 0.8rem;
+	height: 8px;
 }
 .flex-control-nav li {
-  margin: 0 0.8rem;        /* poko */
+  margin: 0 8px;        /* poko */
   display: inline-block;
   zoom: 1;
   *display: inline;
 }
 .flex-control-paging li a {
-  width: 0.8rem;       /* poko */
-  height: 0.8rem;
+  width: 8px;       /* poko */
+  height: 8px;
   display: block;
   /*background: #ffffff;*/
   background: #8d8d8d;

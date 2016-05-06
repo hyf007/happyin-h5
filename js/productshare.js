@@ -31,11 +31,12 @@ function getQueryStringArgs() {
 
 function flexSlider() {
 	$(".flexslider").flexslider({
-		animation: 'slide',
-		slideshow: false,
-		slideshowSpeed: '3000',
-		directionNav: false,
-		keyboard: false
+		animation: 'slide',				//滑动
+		slideshow: true,				//自动播放
+		animationSpeed: 300,			//图片切换300ms
+		slideshowSpeed: '3000',			//自动播放间隔
+		directionNav: false,			//不显示左右按钮
+		keyboard: false					//不允许键盘控制
 	});
 }
 
@@ -135,7 +136,7 @@ $(function(){
 				}
 
 				//refreshSize();
-				flexDownloadBtn();
+				//flexDownloadBtn();
 			}else {
 				$('body').css('display','none');
 				alert('获取失败，请稍后再试。(e:20001)');
