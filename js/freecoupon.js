@@ -54,11 +54,11 @@ connectWebViewJavascriptBridge(function(bridge) {
 				var d = JSON.parse(d);
 			}
 			login_uid = d.uid;
-			toGetShareLimit(login_uid);
+			toGetShareLimit();
 		});
 	});
 
-	function toGetShareLimit(login_uid) {
+	function toGetShareLimit() {
 		$.ajax({
 			url: 'http://app.himoca.com/Catalog/Coupon/myCoupon',
 			dataType: 'json',
@@ -93,7 +93,8 @@ connectWebViewJavascriptBridge(function(bridge) {
 		var paramsJson = {};
 		paramsJson.type = 3;
 		paramsJson.login_uid = login_uid;
-		bridge.callHandler('CallInterface',{'url': location.href,'params': paramsJson},function(d){
+		var url = location.protocol + '//' + location.host + '/Catalog/User/verifyShare';
+		bridge.callHandler('CallInterface',{'url': url,'params': paramsJson},function(d){
 			if (d.success == true) {
 				toAlert(d.result);
 			}

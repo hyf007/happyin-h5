@@ -20,7 +20,7 @@ if (environment.isQq) {
 	appId = '100585261';
 }
 if (environment.isWeixin) {
-	appId = 'wxea7a5f9ccf96e433';
+	appId = 'wx207054e35ea10f5a';
 }
 
 //获取查询字符串参数
@@ -45,8 +45,7 @@ function getQueryStringArgs() {
 }
 
 //var redirectUrl =  location.protocol + '//' + location.host + location.pathname;
-var redirectUrl = 'http://app.himoca.com/order/coupon.html' + location.search;
-//var redirectUrl = 'http://www.himoca.com/';
+var redirectUrl = 'http://happyin.marujunyy.cn/order/coupon.html' + location.search;
 $(function () {
 	var per = screenWidth/320;
 	$('html').css('font-size', (0.625 * per) * 100 + '%');
@@ -73,10 +72,8 @@ $(function () {
 			//alert(2);
 			location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appId + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 		}else if(environment.isLogin) {
-			//alert(getQueryStringArgs().code);
-			//location.href = 'http://app.himoca.com:9967/Catalog/User/webRegister?type=0&code=' + getQueryStringArgs().code;
 			$.ajax({
-				url: 'http://app.himoca.com/Catalog/User/webRegister',
+				url: location.protocol + '//' + location.host + '/Catalog/User/webRegister',
 				dataType: 'json',
 				data: {
 					type: 0,
@@ -103,15 +100,10 @@ $(function () {
 	}
 });
 
-//var inputTelephone = 13811708195;
 function buildDom(data){
 	if (data.self_received != false) {			//如果已领取
 		var resultText = data.self_received;
-		$('.cp-resulttext-number').html(resultText.count);
-		$('.cp-resulttext-unit').html(resultText.unit);
-		$('.cp-resulttext-content').html('无使用门槛' + resultText.count + resultText.unit + '说免费就免费');
-		$('.cp-resulttext-code').html('兑换码: ' + resultText.code);
-		$('.cp-back-result').css('display','block');
+		setResult(resultText.count,resultText.unit,resultText.code);
 	}else {
 		if(data.all_received == true) {
 			$('.cp-back-end').css('display','block');
@@ -131,7 +123,10 @@ function buildDom(data){
 						'<div class="cp-friendimg-cover"></div>' +
 					'</div>' +
 					'<div class="cp-friendtext-box">' +
-						'<p class="cp-friend-nameanddate">'+ index.name +' <i>'+ index.add_time +'</i></p>' +
+						'<div class="clearfix">' +
+							'<p class="cp-friend-name">'+ index.name +'</p>' +
+							'<p class="cp-friend-date">'+ index.add_time +'</p>' +
+						'</div>' +
 						'<p class="cp-friend-content">'+ index.desc +'</p>' +
 					'</div>' +
 					'<p class="cp-friend-num">'+ index.count +'张</p>' +
@@ -146,33 +141,47 @@ function buildDom(data){
 	}).on('touchend',function(){
 		$('.cp-receivebtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
 		var inputTelephone = $('.cp-input').val();
-		alert(inputTelephone);
-		$.ajax({
-			url: 'http://app.himoca.com/Catalog/User/webRegister',
-			dataType: 'json',
-			type: 'POST',
-			data: {
-				ident: getQueryStringArgs().ident,
-				token: data.token,
-				telephone: inputTelephone
-			},
-			success: function(d){
-				console.log(d);
-				if (d.c == 200) {
-					$('.cp-back-receive').css('display','none');
-
-					$('.cp-resulttext-number').html(d.p.count);
-					$('.cp-resulttext-unit').html(d.p.unit);
-					$('.cp-resulttext-content').html('无使用门槛' + d.p.count + d.p.unit + '说免费就免费');
-					$('.cp-resulttext-code').html('兑换码: ' + d.p.code);
-					$('.cp-back-result').css('display','block');
+		var reg = /^\d{11}$/;
+		if(reg.test(inputTelephone)) {
+			$.ajax({
+				url: location.protocol + '//' + location.host + '/Catalog/User/webRegister',
+				dataType: 'json',
+				type: 'POST',
+				data: {
+					ident: getQueryStringArgs().ident,
+					token: data.token,
+					telephone: inputTelephone
+				},
+				success: function(d){
+					console.log(d);
+					if (d.c == 200) {
+						$('.cp-back-receive').css('display','none');
+						setResult(d.p.count,d.p.unit,d.p.code);
+					}
+				},
+				error: function(e){
+					alert(JSON.stringify(e));
 				}
-			},
-			error: function(e){
-				alert(JSON.stringify(e));
-			}
+			})
 
-		})
+		}else if(!reg.test(inputTelephone) && inputTelephone != ''){
+			alert('请输入正确的11位数字');
+			$('.cp-input').val('');
+		}
+	});
+}
 
+function setResult(count,unit,code) {
+	$('.cp-resulttext-number').html(count);
+	$('.cp-resulttext-unit').html(unit);
+	$('.cp-resulttext-content').html('无使用门槛' + count + unit + '说免费就免费');
+	$('.cp-resulttext-code').html('兑换码: ' + code);
+	$('.cp-back-result').css('display','block');
+
+	$('.cp-btn-result').on('touchstart',function(){
+		$('.cp-resultbtn-box').css({'-webkit-transform':'scale3d(0.97,0.97,1)','transform':'scale3d(0.97,0.97,1)'});
+	}).on('touchend',function(){
+		$('.cp-resultbtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
+		//todo
 	});
 }

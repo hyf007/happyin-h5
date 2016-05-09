@@ -18,5 +18,20 @@
 		<img class="banner-right" alt="" src="images/banner_right.png" height="100%">
 		<a href="javascript:void(0)" class="banner-btn"></a>
 	</div>
+<input type="text" maxlength="11">
+	<script src="js/jquery-2.1.4.min.js"></script>
+<script>
+	$(function(){
+		$('.banner-box').on('click',function(){
+			var a = $('input').val();
+			var reg = /^\d{11}$/;
+			if(reg.test(a)){
+				alert(true);
+			}else if(!reg.test(a) && a != ''){
+				alert(false);
+			}
+		})
+	})
+</script>
 </body>
 </html>

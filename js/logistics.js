@@ -106,6 +106,7 @@ $(function(){
 			}
 		},
 		error: function(e){
+			console.log(e);
 			alert('获取失败，请稍后再试。(e:10002)');
 		}
 	})

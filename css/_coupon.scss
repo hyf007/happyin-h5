@@ -23,7 +23,7 @@
 		width: rem(240);
 		height: rem(27);
 		position: absolute;
-		top: rem(119);
+		top: rem(108);
 		left: rem(47);
 		text-align: center;
 		font-size: rem(16);
@@ -34,8 +34,8 @@
 	.cp-receivebtn-box {
 		width: rem(116);
 		position: absolute;
-		left: rem(99);
-		top: rem(164);
+		left: rem(102);
+		top: rem(154);
 
 		.cp-btn-receive {
 			position: absolute;
@@ -61,8 +61,8 @@
 	.cp-resultbtn-box {
 		width: rem(123);
 		position: absolute;
-		top: rem(169);
-		left: rem(97);
+		top: rem(155);
+		left: rem(98);
 
 		.cp-btn-result {
 			position: absolute;
@@ -86,40 +86,40 @@
 
 	.cp-resulttext-title {
 		position: absolute;
-		top: rem(40);
+		top: rem(20);
 		left: rem(56);
 		font-size: rem(20);
 		text-align: center;
 		line-height: rem(24);
 		-webkit-writing-mode: vertical-rl;
 		writing-mode: vertical-rl;
-		letter-spacing: rem(5);
+		letter-spacing: rem(2);
 	}
 
 	.cp-resulttext-number {
 		position: absolute;
-		top: rem(30);
-		right: rem(140);
+		top: rem(10);
+		left: rem(140);
 		font-size: rem(40);
 	}
 
 	.cp-resulttext-unit {
 		position: absolute;
-		top: rem(50);
-		right: rem(100);
+		top: rem(30);
+		left: rem(190);
 		font-size: rem(20);
 	}
 
 	.cp-resulttext-content {
 		position: absolute;
-		top: rem(80);
+		top: rem(60);
 		left: rem(96);
 		font-size: rem(13);
 	}
 
 	.cp-resulttext-code {
 		position: absolute;
-		top: rem(112);
+		top: rem(92);
 		left: rem(100);
 		font-size: rem(16);
 	}
@@ -144,7 +144,6 @@
 		background-size: 100%;
 		position: relative;
 		z-index: 2;
-
 	}
 
 	.cp-back-friendsbottom {
@@ -153,7 +152,7 @@
 	}
 }
 
-ul {
+.cp-friends-ul {
 	margin: rem(-15) rem(37) rem(-15);
 
 	li:nth-child(1) {
@@ -163,6 +162,7 @@ ul {
 	li {
 		margin-top: rem(10);
 		font-weight: bold;
+		position: relative;
 
 		.cp-friendimg-box {
 			float: left;
@@ -204,24 +204,38 @@ ul {
 			float: left;
 			margin: rem(7) 0 0 rem(7);
 
-			.cp-friend-nameanddate {
+			.cp-friend-name {
+				float: left;
 				font-size: rem(10);
 				line-height: rem(14);
+				max-width: rem(51);
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
 
-				i {
-					color: #ffffff;
-				}
+			.cp-friend-date {
+				float: left;
+				font-size: rem(10);
+				line-height: rem(14);
+				color: #ffffff;
+				text-indent: rem(5);
 			}
 
 			.cp-friend-content {
 				font-size: rem(10);
 				line-height: rem(14);
+				width: rem(160);
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
 			}
 		}
 
 		.cp-friend-num {
-			float: right;
-			margin-top: rem(18);
+			position: absolute;
+			top: rem(18);
+			right: 0;
 			font-size: rem(12);
 			line-height: rem(16);
 		}
@@ -232,7 +246,7 @@ ul {
 .cp-back-spread {
 	position: relative;
 	font-size: 0;
-	margin-bottom: 45px;
+	margin-bottom: 46px;
 }
 
 
