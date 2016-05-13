@@ -34,12 +34,13 @@ function getQueryStringArgs() {
 
 $(function() {
 	$('.shareapp-btn').on('touchstart', function () {
-		$('.freecoupon-btn-box').css({
+		$('.shareapp-btn-box').css({
 			'-webkit-transform': 'scale3d(0.97,0.97,1)',
 			'transform': 'scale3d(0.97,0.97,1)'
 		});
 	}).on('touchend', function () {
-		$('.freecoupon-btn-box').css({'-webkit-transform': 'scale3d(1,1,1)', 'transform': 'scale3d(1,1,1)'});
+		$('.shareapp-btn-box').css({'-webkit-transform': 'scale3d(1,1,1)', 'transform': 'scale3d(1,1,1)'});
+		//todo
 	});
 });
 

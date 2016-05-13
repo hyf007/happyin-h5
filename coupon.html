@@ -3,12 +3,13 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>优惠券分享</title>
+	<title>快乐印Happyin</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/jquery-2.1.4.min.js"></script>
-	<script src="js/coupon.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script src="js/coupon.js?2016051001"></script>
 	<style>
 		html {
 			background: #ffd600;
@@ -17,7 +18,8 @@
 </head>
 <body>
 	<div class="cp-back-title">
-		<img alt="" src="images/coupon/coupon_backimg_title.jpg" width="100%">
+		<img class="cp-back-hideimg" alt="" src="http://happyin.marujunyy.cn/admin/images/ed8d8966-bd6f-4f39-b7d0-1a8bc1eca39d_300x300.jpg">
+		<img alt="" src="" width="100%">
 	</div>
 
 	<!--未领取且有剩余-->
@@ -32,19 +34,15 @@
 
 	<!--已领取-->
 	<div class="cp-back-result">
-		<img alt="" src="images/coupon/coupon_backimg_result.jpg" width="100%">
+		<img alt="" src="images/coupon/coupon_backimg_result1.jpg" width="100%">
 		<div class="cp-resultbtn-box">
 			<img alt="" src="images/coupon/coupon_btnimg_02.gif" width="100%">
 			<a href="javascript:void(0)" class="cp-btn-result"></a>
 		</div>
-		<p class="cp-resulttext-title shadow">免费冲印</p>
-		<p class="cp-resulttext-title cp-truetext">免费冲印</p>
 		<p class="cp-resulttext-number shadow"></p>
 		<p class="cp-resulttext-number cp-truetext"></p>
 		<p class="cp-resulttext-unit shadow"></p>
 		<p class="cp-resulttext-unit cp-truetext"></p>
-		<p class="cp-resulttext-content shadow"></p>
-		<p class="cp-resulttext-content cp-truetext"></p>
 		<p class="cp-resulttext-code shadow"></p>
 		<p class="cp-resulttext-code cp-truetext"></p>
 	</div>
@@ -65,11 +63,20 @@
 
 	<!--底部推荐-->
 	<div class="cp-back-spread">
-		<img alt="" src="images/coupon/coupon_backimg_bottom01.jpg" width="100%">
-		<img alt="" src="images/coupon/coupon_backimg_bottom02.jpg" width="100%">
-		<img alt="" src="images/coupon/coupon_backimg_bottom03.jpg" width="100%">
-		<img alt="" src="images/coupon/coupon_backimg_bottom04.jpg" width="100%">
-		<img alt="" src="images/coupon/coupon_backimg_bottomline.jpg" width="100%">
+		<img alt="" src="" width="100%">
+		<div class="cp-back-productbox">
+			<img alt="" src="" width="100%">
+			<a class="cp-back-productbtn" href="productshare.html?productId=67&target=product"></a>
+		</div>
+		<div class="cp-back-productbox">
+			<img alt="" src="" width="100%">
+			<a class="cp-back-productbtn" href="productshare.html?productId=57&target=product"></a>
+		</div>
+		<div class="cp-back-productbox">
+			<img alt="" src="" width="100%">
+			<a class="cp-back-productbtn" href="productshare.html?productId=58&target=product"></a>
+		</div>
+		<img alt="" src="" width="100%">
 	</div>
 
 	<!--底部框-->
@@ -78,5 +85,37 @@
 		<img class="banner-right" alt="" src="images/banner_right.png" height="100%">
 		<a href="javascript:void(0)" class="banner-btn"></a>
 	</div>
+
+	<!--封面-->
+	<div class="loadcover"></div>
+
+	<!--弹框-->
+	<div class="alert-backcover">
+		<div class="alert-box">
+			<div class="alert-content-box">
+				<p class="alert-content"></p>
+			</div>
+			<a class="alert-btn" href="javascript:void(0)">确定</a>
+		</div>
+	</div>
+
+<script>
+	(function()	{
+		var agent = navigator.userAgent;        //检测是否是ios
+		var iLastTouch = null;                                //缓存上一次tap的时间
+		if (agent.indexOf('Mac') > -1 && agent.indexOf('Mobile') > -1) {
+			document.body.addEventListener('touchend', function(event) {
+				var iNow = new Date().getTime();
+				iLastTouch = iLastTouch || iNow + 1;
+				var delta = iNow - iLastTouch;
+				if (delta < 500 && delta > 0) {
+					event.preventDefault();
+					return false;
+				}
+				iLastTouch = iNow;
+			}, false);
+		}
+	})();
+</script>
 </body>
 </html>

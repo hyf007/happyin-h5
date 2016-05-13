@@ -64,9 +64,43 @@ function flexDownloadBtn() {
 	}
 }
 
+function alertSomething(content) {
+	$('body').bind('touchmove', function (e) {
+		e.preventDefault();
+	});
+	$('.alert-content').html(content);
+	$('.alert-btn').on('touchend',function(e){
+		e.preventDefault();
+		$('body').unbind('touchmove');
+		$('.alert-backcover').css('opacity','0');
+		setTimeout(function(){
+			$('.alert-backcover').hide();
+		},300);
+	});
+	$('.alert-backcover').show();
+	setTimeout(function(){
+		$('.alert-backcover').css('opacity','1');
+	},1);
+}
+
+// 根据需要返回2倍图大小
+function getRetinaImgSize(size) {
+	if(window.devicePixelRatio >= 2) {
+		return size*2;
+	} else {
+		return size;
+	}
+}
+
+
 $(function(){
-	var per = screenWidth/320;
-	$('html').css('font-size', (0.625 * per) * 100 + '%');
+	if (screenWidth >= 768) {
+		var per = 768/320;
+		$('html').css({'font-size': (0.625 * per) * 100 + '%', 'max-width': '768px', 'margin': '0 auto'});
+	}else {
+		var per = screenWidth/320;
+		$('html').css('font-size', (0.625 * per) * 100 + '%');
+	}
 
 	$.ajax ({
 		//url: 'http://119.29.77.36:9967/Catalog/Catalog/detail',
@@ -113,7 +147,7 @@ $(function(){
 					);
 					for (var i = 0; i< d.p.list.images.length; i++) {
 						var proImgsrc = d.p.list.images[i];
-						var proImgwidth = parseInt(screenWidth*2);
+						var proImgwidth = parseInt(getRetinaImgSize(screenWidth)>=828? 828:getRetinaImgSize(screenWidth));
 						var proImgheight = parseInt(proImgwidth*0.859375+1);
 						var proImgsize = '_' + proImgwidth + 'x' + proImgheight;
 						var proImgtruesrc = 'http://hipubdev-10006628.file.myqcloud.com/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
@@ -127,7 +161,7 @@ $(function(){
 				}else {
 					for (var i = 0; i< d.p.list.images.length; i++) {
 						var proImgsrc = d.p.list.images[i];
-						var proImgwidth = parseInt(screenWidth * 2);
+						var proImgwidth = parseInt(getRetinaImgSize(screenWidth)>=828? 828:getRetinaImgSize(screenWidth));
 						var proImgheight = parseInt(proImgwidth * 0.859375+1);
 						var proImgsize = '_' + proImgwidth + 'x' + proImgheight;
 						var proImgtruesrc = 'http://hipubdev-10006628.file.myqcloud.com/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
@@ -137,14 +171,14 @@ $(function(){
 
 				//refreshSize();
 				//flexDownloadBtn();
+			}else if(d.c == 404) {
+				alertSomething('该商品已下架 (e:20003)');
 			}else {
-				$('body').css('display','none');
-				alert('获取失败，请稍后再试。(e:20001)');
+				alertSomething('获取失败，请稍后再试。(e:20001)');
 			}
 		},
 		error: function(e){
-			$('body').css('display','none');
-			alert('获取失败，请稍后再试。(e:20002)');
+			alertSomething('获取失败，请稍后再试。(e:20002)');
 		}
 	})
 });

@@ -13,24 +13,50 @@
 	</style>
 </head>
 <body>
+<!--底部导航-->
 	<div class="banner-box clearfix">
 		<img class="banner-left" alt="" src="images/banner_left.png" height="100%">
 		<img class="banner-right" alt="" src="images/banner_right.png" height="100%">
 		<a href="javascript:void(0)" class="banner-btn"></a>
 	</div>
 <input type="text" maxlength="11">
+
+	<!--弹框-->
+	<div class="alert-backcover">
+		<div class="alert-box">
+			<div class="alert-content-box">
+				<p class="alert-content">请输入正确的手机号</p>
+			</div>
+			<a class="alert-btn" href="javascript:void(0)">确定</a>
+		</div>
+	</div>
 	<script src="js/jquery-2.1.4.min.js"></script>
 <script>
 	$(function(){
 		$('.banner-box').on('click',function(){
 			var a = $('input').val();
-			var reg = /^\d{11}$/;
+			var reg = /1[3458]{1}\d{9}$/;
 			if(reg.test(a)){
-				alert(true);
+				alertSomething('true');
 			}else if(!reg.test(a) && a != ''){
-				alert(false);
+				alertSomething('false');
 			}
-		})
+//			alertSomething('请输入正确的手机号');
+		});
+
+		function alertSomething(content) {
+			$('.alert-content').html(content);
+			$('.alert-btn').on('touchend',function(){
+				$('.alert-backcover').css('opacity','0');
+				setTimeout(function(){
+					$('.alert-backcover').hide();
+				},300);
+			});
+			$('.alert-backcover').show();
+			setTimeout(function(){
+				$('.alert-backcover').css('opacity','1');
+			},1);
+		}
 	})
 </script>
 </body>

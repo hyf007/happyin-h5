@@ -11,6 +11,16 @@
 
 .cp-back-title {
 	font-size: 0;
+	font-family: FZYHJW-forcoupon;
+
+	.cp-back-hideimg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
 }
 
 .cp-back-receive {
@@ -61,7 +71,7 @@
 	.cp-resultbtn-box {
 		width: rem(123);
 		position: absolute;
-		top: rem(155);
+		top: rem(204);
 		left: rem(98);
 
 		.cp-btn-result {
@@ -85,43 +95,50 @@
 	}
 
 	.cp-resulttext-title {
+		width: rem(30);
+		height: rem(100);
 		position: absolute;
 		top: rem(20);
-		left: rem(56);
+		left: rem(52);
 		font-size: rem(20);
 		text-align: center;
-		line-height: rem(24);
+		line-height: rem(30);
 		-webkit-writing-mode: vertical-rl;
 		writing-mode: vertical-rl;
-		letter-spacing: rem(2);
+		letter-spacing: rem(1.5);
+		word-spacing: rem(1.5);
 	}
 
 	.cp-resulttext-number {
 		position: absolute;
-		top: rem(10);
-		left: rem(140);
-		font-size: rem(40);
+		top: rem(30);
+		left: rem(150);
+		font-size: rem(60);
 	}
 
 	.cp-resulttext-unit {
 		position: absolute;
-		top: rem(30);
+		top: rem(60);
 		left: rem(190);
-		font-size: rem(20);
+		font-size: rem(30);
 	}
 
 	.cp-resulttext-content {
 		position: absolute;
 		top: rem(60);
-		left: rem(96);
+		left: rem(104);
 		font-size: rem(13);
 	}
 
 	.cp-resulttext-code {
+		width: rem(210);
+		height: rem(30);
 		position: absolute;
-		top: rem(92);
-		left: rem(100);
-		font-size: rem(16);
+		top: rem(114);
+		left: rem(80);
+		font-size: rem(20);
+		line-height: rem(30);
+		text-align: center;
 	}
 }
 
@@ -247,9 +264,34 @@
 	position: relative;
 	font-size: 0;
 	margin-bottom: 46px;
+
+	.cp-back-productbox {
+		position: relative;
+
+		.cp-back-productbtn {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+
+		}
+	}
+
 }
 
-
+.loadcover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: #ffd600;
+	z-index: 999;
+	display: none;
+}
 
 
 
