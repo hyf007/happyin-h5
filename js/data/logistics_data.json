@@ -1,0 +1,61 @@
+{
+  "c": 200,
+  "n": "",
+  "m": "",
+  "p": {
+    "order_child_id": "3540",
+    "shipping_id": "227371449128",
+    "payload": [
+      {
+        "AcceptTime": "2016-03-24 11:47:54",
+        "AcceptStation": "【签收】已签收,签收人是:【已签收】"
+      },
+      {
+        "AcceptTime": "2016-03-24 07:53:45",
+        "AcceptStation": "【派件】【北京新亚运村公司】的派件员【南沙滩】正在派件"
+      },
+      {
+        "AcceptTime": "2016-03-24 01:17:31",
+        "AcceptStation": "【到件】快件已到达【北京新亚运村公司】"
+      },
+      {
+        "AcceptTime": "2016-03-24 01:17:23",
+        "AcceptStation": "【到件】快件已到达【北京新亚运村公司】"
+      },
+      {
+        "AcceptTime": "2016-03-23 21:03:45",
+        "AcceptStation": "【发件】由【北京中转部】发往【北京新亚运村公司】"
+      },
+      {
+        "AcceptTime": "2016-03-22 21:59:44",
+        "AcceptStation": "【发件】由【安徽合肥航空部】发往【北京中转部】"
+      },
+      {
+        "AcceptTime": "2016-03-22 20:55:49",
+        "AcceptStation": "【装袋】【安徽合肥公司】正在进行【装袋】扫描"
+      },
+      {
+        "AcceptTime": "2016-03-22 20:55:49",
+        "AcceptStation": "【发件】由【安徽合肥公司】发往【安徽合肥中转部】"
+      },
+      {
+        "AcceptTime": "2016-03-22 20:08:52",
+        "AcceptStation": "【收件】【安徽合肥公司】的收件员【三十八所】已收件"
+      },
+      {
+        "AcceptTime": "2016-03-22 19:02:15",
+        "AcceptStation": "【收件】【安徽合肥公司】的收件员【三十八所片】已收件"
+      }
+    ],
+    "status": "在途中",
+    "telephone": "18601920336",
+    "company": "申通快递",
+    "shipping_firstname": "兔兔啊",
+    "shipping_address_1": "hjjjjhh ",
+    "shipping_country": "北京市",
+    "shipping_city": "北京市东城区",
+    "date_added": "2016-05-18 11:25:50"
+  },
+  "h": "",
+  "ts": 1463555560000
+}

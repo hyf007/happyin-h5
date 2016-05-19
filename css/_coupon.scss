@@ -6,7 +6,8 @@
 
 @font-face {
 	font-family: 'FZYHJW-forcoupon';
-	src: url('../fonts/FZYHJW-forcoupon.ttf') format("truetype");
+	src: url('../fonts/FZYHJW-forcoupon1.eot');
+	src: url('../fonts/FZYHJW-forcoupon1.eot?#iefix') format("embedded-opentype"), url('../fonts/FZYHJW-forcoupon1.woff') format("woff"), url('../fonts/FZYHJW-forcoupon1.woff2') format("woff2"), url('../fonts/FZYHJW-forcoupon1.ttf') format("truetype"), url('../fonts/FZYHJW-forcoupon1.otf') format("opentype");
 }
 
 .cp-back-title {
@@ -110,6 +111,7 @@
 	}
 
 	.cp-resulttext-number {
+		font-family: FZYHJW-forcoupon;
 		position: absolute;
 		top: rem(30);
 		left: rem(150);
@@ -117,6 +119,7 @@
 	}
 
 	.cp-resulttext-unit {
+		font-family: FZYHJW-forcoupon;
 		position: absolute;
 		top: rem(60);
 		left: rem(190);
@@ -124,6 +127,7 @@
 	}
 
 	.cp-resulttext-content {
+		font-family: FZYHJW-forcoupon;
 		position: absolute;
 		top: rem(60);
 		left: rem(104);
@@ -131,6 +135,7 @@
 	}
 
 	.cp-resulttext-code {
+		font-family: FZYHJW-forcoupon;
 		width: rem(210);
 		height: rem(30);
 		position: absolute;

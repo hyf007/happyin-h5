@@ -8,8 +8,11 @@
 		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-2.1.4.min.js"></script>
 	<style>
 		body{ background: #f8be02}
+		.box .div{ background: green}
+		.div{ background:red;}
 	</style>
 </head>
 <body>
@@ -30,9 +33,14 @@
 			<a class="alert-btn" href="javascript:void(0)">确定</a>
 		</div>
 	</div>
-	<script src="js/jquery-2.1.4.min.js"></script>
+	<div class="box">
+		<div class="div" style="width: 100px; height: 100px;"></div>
+	</div>
+	<div class="div" style="width: 100px; height: 100px;"></div>
 <script>
 	$(function(){
+
+
 		$('.banner-box').on('click',function(){
 			var a = $('input').val();
 			var reg = /1[3458]{1}\d{9}$/;

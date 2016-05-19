@@ -3,15 +3,15 @@
  */
 'use strict';
 
-var screenWidth = $(window).width();  //ÆÁÄ»¿í¶È
-var screenHeight = $(window).height(); //ÆÁÄ»¸ß¶È
+var screenWidth = $(window).width();  //å±å¹•å®½åº¦
+var screenHeight = $(window).height(); //å±å¹•é«˜åº¦
 
 $(function(){
 	var per = screenWidth/320;
 	$('html').css('font-size', (0.625 * per) * 100 + '%');
 });
 
-//»ñÈ¡²éÑ¯×Ö·û´®²ÎÊý
+//èŽ·å–æŸ¥è¯¢å­—ç¬¦ä¸²å‚æ•°
 function getQueryStringArgs() {
 	var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
 		args = {},

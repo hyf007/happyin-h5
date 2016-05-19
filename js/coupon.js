@@ -4,7 +4,6 @@ var screenWidth = $(window).width();  //屏幕宽度
 var screenHeight = $(window).height(); //屏幕高度
 
 var ua = navigator.userAgent;
-//alert(ua);
 var environment = {
 	isWeixin: (/MicroMessenger/i).test(ua),
 	isLogin: getQueryStringArgs().code,
@@ -15,14 +14,12 @@ var environment = {
 	isWinPhone: (ua.indexOf('Windows Phone') > -1)
 };
 
-var appId;
-// QQ
-if (environment.isQq) {
-	appId = '100585261';
-}
-if (environment.isWeixin) {
-	appId = 'wx59fc01b1ef6fcfe5';
-}
+//各平台登陆appId
+var appId = {
+	'isQq': '101308522',
+	'isWeixin': 'wx59fc01b1ef6fcfe5',
+	'isWeibo': '3366847509'
+};
 
 //获取查询字符串参数
 function getQueryStringArgs() {
@@ -45,10 +42,13 @@ function getQueryStringArgs() {
 	return args;
 }
 
+//获取cookie用于快速登陆
 var loginToken = $.cookie('LoginToken')==undefined? '': $.cookie('LoginToken');
 
+//注册环节
 function webRegister(type){
 	console.log('loginToken:'+loginToken);
+	//alert('type:' + type + ';code:' + getQueryStringArgs().code + ';ident:' + getQueryStringArgs().ident + ';token:'+loginToken);
 	$.ajax({
 		url: location.protocol + '//' + location.host + '/Catalog/User/webRegister',
 		dataType: 'json',
@@ -83,6 +83,7 @@ function webRegister(type){
 	})
 }
 
+//显示剩余的图片
 function showOtherImg() {
 	$('.cp-back-title').find('img').eq(1).attr('src','images/coupon/coupon_backimg_title.jpg');
 	for(var i = 1; i< 5; i++) {
@@ -91,40 +92,154 @@ function showOtherImg() {
 	$('.cp-back-spread').find('img').eq(4).attr('src','images/coupon/coupon_backimg_bottomline.jpg');
 }
 
-//var redirectUrl =  location.protocol + '//' + location.host + location.pathname;
-//var redirectUrl = location.protocol + '//' + location.host + '/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target;
+//微信jssdk
+function getJsSdkData() {
+	var weixinShareJson = {
+		'title': '对不起！让您花钱洗了这么多年照片',
+		'desc': '终身免费手机照片冲印APP',
+		'link': location.protocol + '//' + location.host + '/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target,
+		'imgUrl': 'http://hipubdev-10006628.file.myqcloud.com/admin/images/logo.jpg'
+	};
+
+
+	$.ajax({
+		url: location.protocol + '//' + location.host + '/Catalog/User/getJSSDK',
+		dataType: 'json',
+		data: {
+			url: location.href,
+			platform: 2
+		},
+		success: function (d) {
+			console.log(d);
+
+			wx.config({
+				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				appId: appId.isWeixin, // 必填，公众号的唯一标识
+				timestamp: d.timestamp, // 必填，生成签名的时间戳
+				nonceStr: d.noncestr, // 必填，生成签名的随机串
+				signature: d.signature, // 必填，签名，见附录1
+				jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});
+
+			wx.ready(function() {
+
+				// 分享给朋友
+				wx.onMenuShareAppMessage({
+					title: weixinShareJson.title,
+					desc: weixinShareJson.desc,
+					link: weixinShareJson.link,
+					imgUrl: weixinShareJson.imgUrl,
+					success: function () {
+						// 用户确认分享后执行的回调函数
+					},
+					cancel: function () {
+						// 用户取消分享后执行的回调函数
+					}
+				});
+
+				// 分享到朋友圈
+				wx.onMenuShareTimeline({
+					title: weixinShareJson.title,
+					link: weixinShareJson.link,
+					imgUrl: weixinShareJson.imgUrl,
+					success: function () {
+						// 用户确认分享后执行的回调函数
+					},
+					cancel: function () {
+						// 用户取消分享后执行的回调函数
+					}
+				});
+
+				// 分享到QQ
+				wx.onMenuShareQQ({
+					title: weixinShareJson.title,
+					desc: weixinShareJson.desc,
+					link: weixinShareJson.link,
+					imgUrl: weixinShareJson.imgUrl,
+					success: function () {
+						// 用户确认分享后执行的回调函数
+					},
+					cancel: function () {
+						// 用户取消分享后执行的回调函数
+					}
+				});
+
+				// 分享到腾讯微博
+				wx.onMenuShareWeibo({
+					title: weixinShareJson.title,
+					desc: weixinShareJson.desc,
+					link: weixinShareJson.link,
+					imgUrl: weixinShareJson.imgUrl,
+					success: function () {
+						// 用户确认分享后执行的回调函数
+					},
+					cancel: function () {
+						// 用户取消分享后执行的回调函数
+					}
+				});
+
+				// 分享到Q-zone
+				wx.onMenuShareQZone({
+					title: weixinShareJson.title,
+					desc: weixinShareJson.desc,
+					link: weixinShareJson.link,
+					imgUrl: weixinShareJson.imgUrl,
+					success: function () {
+						// 用户确认分享后执行的回调函数
+					},
+					cancel: function () {
+						// 用户取消分享后执行的回调函数
+					}
+				});
+			})
+		},
+		error: function(e){
+			console.log(e);
+		}
+	});
+}
+
 var redirectUrl = '';
 $(function () {
-	redirectUrl = 'http://happyin.marujunyy.cn/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target;
+	//回调地址
+	redirectUrl = 'http://api.happyin.com.cn/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target;
+
+	//rem适应布局
 	var per = screenWidth/320;
 	$('html').css('font-size', (0.625 * per) * 100 + '%');
 
-	$('.loadcover').on('touchstart',function(e){
-		e.preventDefault();
-	});
-
-
-
-	if(environment.isQq && environment.isWeixin == false) {		//QQ登陆
-		showOtherImg();
+	//QQ登陆
+	if(environment.isQq && environment.isWeixin == false) {
 		if (!environment.isLogin) {
-			location.href = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=' + appId + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&state=STATE';
+			location.href = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=' + appId.isQq + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&state=STATE';
 		}else if(environment.isLogin) {
-
+			var type = 2;
+			webRegister(type);
 		}
 
-	}else if(environment.isWeixin) {					//weixin登陆
+	//weixin登陆
+	}else if(environment.isWeixin) {
+		getJsSdkData();
 		if (!environment.isLogin && loginToken == '') {
-			location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appId + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+			location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appId.isWeixin + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 		}else {
-			//$('.loadcover').remove();
 			var type = 0;
 			webRegister(type);
 		}
-	}else if(environment.isWeibo) {						//weibo登陆
-		showOtherImg();
-	}else {												//普通浏览器打开
-		location.href = location.protocol + '//' + location.host + '/order/freecouponshare.html';
+
+	//weibo登陆
+	}else if(environment.isWeibo) {
+		if (!environment.isLogin) {
+			location.href = 'https://api.weibo.com/oauth2/authorize?client_id='+appId.isWeibo+'&redirect_uri='+ redirectUrl +'&response_type=code';
+		}else if(environment.isLogin) {
+			//alert(getQueryStringArgs().code);
+			var type = 1;
+			webRegister(type);
+		}
+
+	//普通浏览器打开
+	}else {
+		location.href = location.protocol + '//' + location.host + '/as/1';
 	}
 });
 
@@ -141,7 +256,7 @@ function buildDom(data){
 	}
 
 	showOtherImg();
-	setFriendsList(data);
+	setFriendsList(data);	//加载好友列表
 
 	$('.cp-btn-receive').on('touchstart',function(){
 		$('.cp-receivebtn-box').css({'-webkit-transform':'scale3d(0.97,0.97,1)','transform':'scale3d(0.97,0.97,1)'});

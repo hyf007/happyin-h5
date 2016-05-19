@@ -47,6 +47,7 @@ function checkTel(str, str2) {
 $(function(){
 	$('.log-body').css('min-height',(screenHeight-54) + 'px');
 	$.ajax({
+		//url: 'js/data/logistics_data.json',
 		url: location.protocol + '//' + location.host + '/Catalog/Express/traces',
 		dataType: 'json',
 		data: {
@@ -102,14 +103,32 @@ $(function(){
 				}
 			$('.whitecover').css('display','none');
 			}else {
-				alert('获取失败，请稍后再试。(e:10001)');
+				alertSomething('获取失败，请稍后再试。(e:10001)');
 			}
 		},
 		error: function(e){
 			console.log(e);
-			alert('获取失败，请稍后再试。(e:10002)');
+			alertSomething('获取失败，请稍后再试。(e:10002)');
 		}
 	})
 });
 
+function alertSomething(content) {
+	$('body').bind('touchmove', function (e) {
+		e.preventDefault();
+	});
+	$('.alert-content').html(content);
+	$('.alert-btn').on('touchend',function(e){
+		e.preventDefault();
+		$('body').unbind('touchmove');
+		$('.alert-backcover').css('opacity','0');
+		setTimeout(function(){
+			$('.alert-backcover').hide();
+		},300);
+	});
+	$('.alert-backcover').show();
+	setTimeout(function(){
+		$('.alert-backcover').css('opacity','1');
+	},1);
+}
 
