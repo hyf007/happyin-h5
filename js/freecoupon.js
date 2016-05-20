@@ -34,7 +34,7 @@ function getQueryStringArgs() {
 
 var login_uid = '';
 var user_info = '';
-var info = '';
+var user_vip;
 
 function connectWebViewJavascriptBridge(callback) {
 	if (window.WebViewJavascriptBridge) {
@@ -54,7 +54,16 @@ connectWebViewJavascriptBridge(function(bridge) {
 			if(typeof d === 'string') {
 				var d = JSON.parse(d);
 			}
+			//alert(JSON.stringify(d));
 			login_uid = d.uid;
+			user_vip = d.vip;
+			if(user_vip){
+				$('.freecoupon-back-isnotvip').hide();
+				$('.freecoupon-back-isvip').show();
+			}else {
+				$('.freecoupon-back-isvip').hide();
+				$('.freecoupon-back-isnotvip').show();
+			}
 			toGetShareLimit();
 		});
 	});
@@ -92,7 +101,7 @@ connectWebViewJavascriptBridge(function(bridge) {
 			}
 			//alert(JSON.stringify(d));
 			user_info = d.user_info;
-			if (!!d.result == true) {
+			if (!!d.result == true && user_vip == false) {
 				toCheckSuccess();
 			}else {
 
