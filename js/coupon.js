@@ -202,7 +202,7 @@ function getJsSdkData() {
 var redirectUrl = '';
 $(function () {
 	//回调地址
-	redirectUrl = 'http://api.happyin.com.cn/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target;
+	redirectUrl = location.protocol + '//' + location.host + '/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target;
 
 	//rem适应布局
 	var per = screenWidth/320;
