@@ -73,7 +73,7 @@ $(function(){
 				$('.order-number').find('i').html(d.p.shipping_id);	//物流单号
 				$('.order-company').html(d.p.company);	//货运公司
 
-				if (d.p.payload.length > 0) {
+				if (d.p.payload) {
 					for(var i=0; i< d.p.payload.length; i++) {
 						var index = i;
 						$('.log-ul-box').append(
