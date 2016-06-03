@@ -337,7 +337,7 @@ function setFriendsList(data) {
 				'<p class="cp-friend-name">'+ index.name +'</p>' +
 				'<p class="cp-friend-date">'+ index.add_time +'</p>' +
 				'</div>' +
-				'<p class="cp-friend-content">手气不错，抽到'+ index.desc +'优惠券</p>' +
+				'<p class="cp-friend-content">手气不错，抽到'+ index.desc.replace('抵扣','') +'优惠券</p>' +
 				'</div>' +
 				'<p class="cp-friend-num">'+ index.count + index.unit + '</p>' +
 				'</li>';
