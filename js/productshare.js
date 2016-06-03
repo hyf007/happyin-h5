@@ -170,7 +170,7 @@ $(function(){
 						var proImgwidth = parseInt(getRetinaImgSize(screenWidth)>=828? 828:getRetinaImgSize(screenWidth));
 						var proImgheight = parseInt(proImgwidth*0.859375+1);
 						var proImgsize = '_' + proImgwidth + 'x' + proImgheight;
-						var proImgtruesrc = 'http://hipubdev-10006628.file.myqcloud.com/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
+						var proImgtruesrc = 'http://happyin-10041765.file.myqcloud.com/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
 
 						$('.slides').append('' +
 							'<li class="ps-li">' +

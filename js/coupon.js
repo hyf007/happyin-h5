@@ -18,7 +18,8 @@ var environment = {
 var appId = {
 	'isQq': '101308522',
 	'isWeixin': 'wx59fc01b1ef6fcfe5',
-	'isWeibo': '3366847509'
+	'isWeibo': '3366847509',
+	'isWeixinTest': 'wx207054e35ea10f5a'
 };
 
 //获取查询字符串参数
@@ -98,7 +99,7 @@ function getJsSdkData() {
 		'title': '对不起！让您花钱洗了这么多年照片',
 		'desc': '终身免费手机照片冲印APP',
 		'link': location.protocol + '//' + location.host + '/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target,
-		'imgUrl': 'http://hipubdev-10006628.file.myqcloud.com/admin/images/logo.jpg'
+		'imgUrl': 'http://happyin-10041765.file.myqcloud.com/admin/images/logo.jpg'
 	};
 
 
@@ -210,7 +211,7 @@ $(function () {
 
 	//QQ登陆
 	if(environment.isQq && environment.isWeixin == false) {
-		if (!environment.isLogin) {
+		if (!environment.isLogin && loginToken == '') {
 			location.href = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=' + appId.isQq + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&state=STATE';
 		}else if(environment.isLogin) {
 			var type = 2;
@@ -229,7 +230,7 @@ $(function () {
 
 	//weibo登陆
 	}else if(environment.isWeibo) {
-		if (!environment.isLogin) {
+		if (!environment.isLogin && loginToken == '') {
 			location.href = 'https://api.weibo.com/oauth2/authorize?client_id='+appId.isWeibo+'&redirect_uri='+ redirectUrl +'&response_type=code';
 		}else if(environment.isLogin) {
 			//alert(getQueryStringArgs().code);
