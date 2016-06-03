@@ -13,6 +13,23 @@
 		body{ background: #f8be02}
 		.box .div{ background: green}
 		.div{ background:red;}
+
+		.love {
+			display: block;
+			width: 100px; height: 100px;
+			background: url(web_heart_animation.png) 0 0 no-repeat;
+			background-size: 2900%;
+			animation: heart-burst steps(28) 3s forwards;
+		}
+
+		@keyframes heart-burst {
+			0% {
+				background-position: 0%;
+			}
+			100% {
+				background-position: 100%;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -37,6 +54,8 @@
 		<div class="div" style="width: 100px; height: 100px;"></div>
 	</div>
 	<div class="div" style="width: 100px; height: 100px;"></div>
+
+	<div id="testImg" class="love"></div>
 <script>
 	$(function(){
 

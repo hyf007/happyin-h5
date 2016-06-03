@@ -246,7 +246,7 @@ $(function () {
 function buildDom(data){
 	if (data.self_received != undefined) {			//如果已领取
 		var resultText = data.self_received;
-		setResult(resultText.count,resultText.unit,resultText.code);
+		setResult(resultText.title,resultText.count,resultText.unit,resultText.code);
 	}else {
 		if(data.all_received == true) {				//如果全领完
 			$('.cp-back-end').css('display','block');
@@ -291,11 +291,11 @@ function buildDom(data){
 								$("html,body").animate({scrollTop:0}, 500);
 							}else {
 								if(d.p.result) {
-									setResult(d.p.result.count,d.p.result.unit,d.p.result.code);
+									setResult(d.p.result.title,d.p.result.count,d.p.result.unit,d.p.result.code);
 									$('.cp-back-title').css('display','none');
 									$("html,body").animate({scrollTop:0}, 500);
 								}else if(d.p.self_received) {
-									setResult(d.p.self_received.count,d.p.self_received.unit,d.p.self_received.code);
+									setResult(d.p.self_received.title,d.p.self_received.count,d.p.self_received.unit,d.p.self_received.code);
 									$('.cp-back-title').css('display','none');
 									$("html,body").animate({scrollTop:0}, 500);
 								}
@@ -318,6 +318,7 @@ function buildDom(data){
 	});
 }
 
+
 function setFriendsList(data) {
 	//创建好友列表
 	$('.cp-back-friends').css('display','none');
@@ -336,7 +337,7 @@ function setFriendsList(data) {
 				'<p class="cp-friend-name">'+ index.name +'</p>' +
 				'<p class="cp-friend-date">'+ index.add_time +'</p>' +
 				'</div>' +
-				'<p class="cp-friend-content">手气不错，抽到相框抵扣券</p>' +
+				'<p class="cp-friend-content">手气不错，抽到'+ index.desc +'优惠券</p>' +
 				'</div>' +
 				'<p class="cp-friend-num">'+ index.count + index.unit + '</p>' +
 				'</li>';
@@ -346,7 +347,8 @@ function setFriendsList(data) {
 	}
 }
 
-function setResult(count,unit,code) {
+function setResult(title,count,unit,code) {
+	$('.cp-resulttext-title').html(title);
 	var countStr = ''+count;
 	$('.cp-resulttext-number').html(count).css('left',16.5-(countStr.length*1.5) + 'rem');
 	$('.cp-resulttext-unit').html(unit).css('left',17.5+(countStr.length*1.5) + 'rem');
