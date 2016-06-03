@@ -61,7 +61,7 @@ function webRegister(type){
 		},
 		success: function(d){
 			//alert('成功');
-			alert(JSON.stringify(d));
+			//alert(JSON.stringify(d));
 			console.log(d);
 			if (d.c == 200 && d.p.result != false) {
 				buildDom(d.p);
@@ -77,7 +77,7 @@ function webRegister(type){
 		},
 		error: function(e){
 			//alert('失败');
-			alert(JSON.stringify(e));
+			//alert(JSON.stringify(e));
 			$.cookie('LoginToken', '',{expires:-1});
 			location.href = redirectUrl;
 		}
