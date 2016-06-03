@@ -184,13 +184,13 @@ $(function(){
 						var proImgwidth = parseInt(getRetinaImgSize(screenWidth)>=828? 828:getRetinaImgSize(screenWidth));
 						var proImgheight = parseInt(proImgwidth * 0.859375+1);
 						var proImgsize = '_' + proImgwidth + 'x' + proImgheight;
-						var proImgtruesrc = 'http://hipubdev-10006628.file.myqcloud.com/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
+						var proImgtruesrc = 'http://happyin-10041765.file.myqcloud.com/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
 						$('.ps-cover-back').append('<img alt="" src="' + proImgtruesrc + '" width="100%">');
 					}
 				}
 
 				if (environment.isWeixin) {
-					var shareImgUrl = 'http://hipubdev-10006628.file.myqcloud.com/' + d.p.list.images[0].split('.')[0] + '_300x300.' + d.p.list.images[0].split('.')[1];
+					var shareImgUrl = 'http://happyin-10041765.file.myqcloud.com/' + d.p.list.images[0].split('.')[0] + '_300x300.' + d.p.list.images[0].split('.')[1];
 					getJsSdkData(shareImgUrl);
 				}
 

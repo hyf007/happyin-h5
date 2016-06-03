@@ -61,7 +61,7 @@ function webRegister(type){
 		},
 		success: function(d){
 			//alert('成功');
-			//alert(JSON.stringify(d));
+			alert(JSON.stringify(d));
 			console.log(d);
 			if (d.c == 200 && d.p.result != false) {
 				buildDom(d.p);
@@ -77,7 +77,7 @@ function webRegister(type){
 		},
 		error: function(e){
 			//alert('失败');
-			//alert(JSON.stringify(e));
+			alert(JSON.stringify(e));
 			$.cookie('LoginToken', '',{expires:-1});
 			location.href = redirectUrl;
 		}
@@ -213,7 +213,7 @@ $(function () {
 	if(environment.isQq && environment.isWeixin == false) {
 		if (!environment.isLogin && loginToken == '') {
 			location.href = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=' + appId.isQq + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&state=STATE';
-		}else if(environment.isLogin) {
+		}else {
 			var type = 2;
 			webRegister(type);
 		}
@@ -232,7 +232,7 @@ $(function () {
 	}else if(environment.isWeibo) {
 		if (!environment.isLogin && loginToken == '') {
 			location.href = 'https://api.weibo.com/oauth2/authorize?client_id='+appId.isWeibo+'&redirect_uri='+ redirectUrl +'&response_type=code';
-		}else if(environment.isLogin) {
+		}else {
 			//alert(getQueryStringArgs().code);
 			var type = 1;
 			webRegister(type);
