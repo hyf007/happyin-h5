@@ -218,8 +218,18 @@ $(function () {
 			webRegister(type);
 		}
 
-	//weixin登陆
-	}else if(environment.isWeixin) {
+	//weixin登陆 测试环境
+	}else if(environment.isWeixin && location.host == 'dev.happyin.com.cn:9969') {
+		getJsSdkData();
+		if (!environment.isLogin && loginToken == '') {
+			location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appId.isWeixinTest + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+		}else {
+			var type = 0;
+			webRegister(type);
+		}
+
+	//weixin登陆 正式环境
+	}else if(environment.isWeixin && location.host == 'staging.happyin.com.cn') {
 		getJsSdkData();
 		if (!environment.isLogin && loginToken == '') {
 			location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appId.isWeixin + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
@@ -280,10 +290,10 @@ function buildDom(data){
 					if (d.c == 200) {
 						if (d.p.phone_illegal != undefined && d.p.phone_illegal === true) {
 							alertSomething('请输入正确的手机号');
-							$('.cp-input').val('');
+							$('.cp-input').val('').blur();
 						}else if(d.p.phone_same != undefined && d.p.phone_same === true){
 							alertSomething('手机号重复领取');
-							$('.cp-input').val('');
+							$('.cp-input').val('').blur();
 						}else {
 							$('.cp-back-receive').css('display','none');
 							if(d.p.all_received == true) {
@@ -308,13 +318,13 @@ function buildDom(data){
 				error: function(e){
 					//alert(JSON.stringify(e));
 					alertSomething('领取失败，请稍后重试。');
-					$('.cp-input').val('');
+					$('.cp-input').val('').blur();
 				}
 			})
 
 		}else if(!reg.test(inputTelephone) && inputTelephone != ''){
 			alertSomething('请输入正确的手机号');
-			$('.cp-input').val('');
+			$('.cp-input').val('').blur();
 		}
 	});
 }
