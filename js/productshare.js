@@ -19,6 +19,7 @@ var environment = {
 	isWinPhone: (ua.indexOf('Windows Phone') > -1)
 };
 
+var imgDownloadDomain;
 
 //各平台登陆appId
 var appId = {
@@ -59,7 +60,7 @@ function flexSlider() {
 	});
 }
 
-//调换尺寸
+//调换尺寸 功能废弃
 function refreshSize() {
 	var refreshCheck = 0;
 	$('.ps-refresh-btn').on('click',function(e){
@@ -75,6 +76,7 @@ function refreshSize() {
 	})
 }
 
+//调整下载按钮尺寸 功能废弃
 function flexDownloadBtn() {
 	var psBoxHeight = $('.ps-box').height();
 	var psDownloadbtnBoxHeight = $('.ps-downloadbtn-box').height();
@@ -83,12 +85,13 @@ function flexDownloadBtn() {
 	}
 }
 
+//alert优化
 function alertSomething(content) {
 	$('body').bind('touchmove', function (e) {
 		e.preventDefault();
 	});
 	$('.alert-content').html(content);
-	$('.alert-btn').on('touchend',function(e){
+	$('.alert-btn').on('touchend',function(e) {
 		e.preventDefault();
 		$('body').unbind('touchmove');
 		$('.alert-backcover').css('opacity','0');
@@ -111,8 +114,34 @@ function getRetinaImgSize(size) {
 	}
 }
 
+var addImgIndex = 0;
+function addImg(d) {
+	if(addImgIndex < d.p.list.images.length) {
+		var proImgsrc = d.p.list.images[addImgIndex];
+		var proImgwidth = parseInt(getRetinaImgSize(screenWidth)>=828? 828:getRetinaImgSize(screenWidth));
+		var proImgheight = parseInt(proImgwidth*0.859375+1);
+		var proImgsize = '_' + proImgwidth + 'x' + proImgheight;
+		var proImgtruesrc = 'http://'+ imgDownloadDomain +'/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
 
-$(function(){
+		var oImg = new Image();
+		oImg.alt = '';
+		oImg.src = proImgtruesrc;
+		$(oImg).attr('width','100%');
+		$(oImg).load(function(){
+			$('.slides').append('<li class="ps-li"></li>').find('li').last().append(this);
+			addImgIndex++;
+			addImg(d);
+		});
+		$(oImg).error(function(){
+			i++;
+			addImg();
+		})
+	}else {
+		flexSlider();
+	}
+}
+
+function buildDom(){
 	if (screenWidth >= 768) {
 		var per = 768/320;
 		$('html').css({'font-size': (0.625 * per) * 100 + '%', 'max-width': '768px', 'margin': '0 auto'});
@@ -135,11 +164,14 @@ $(function(){
 			}
 
 			if (d.c == 200) {
+				//颜色
 				$('.ps-info-box').css('background',d.p.list.color);
 
+				//商品名称
 				$('.ps-enname').html(d.p.list.title3);
 				$('.ps-chname').html(d.p.list.name);
 
+				//尺寸
 				if (!!d.p.list.cm.height) {
 					var proCm = d.p.list.cm.length + 'x' + d.p.list.cm.width + 'x' + d.p.list.cm.height + ' cm';
 				}else {
@@ -149,6 +181,7 @@ $(function(){
 				var proInch = d.p.list.inch.length + 'x' + d.p.list.inch.width + 'x' + d.p.list.inch.height + ' inch';
 				$('.ps-size').html(proCm);
 
+				//价格
 				var proPrice = d.p.list.price.split('.');
 				if (proPrice[1] == '00') {
 					$('.ps-cost').find('i').html(proPrice[0]);
@@ -157,6 +190,7 @@ $(function(){
 				}
 				$('.ps-cost-unit').html(d.p.list.unit_str);
 
+				//描述
 				$('.ps-desc').html(d.p.list.desc);
 
 				if (d.p.list.images.length > 1) {
@@ -165,32 +199,26 @@ $(function(){
 							'<ul class="slides clearfix"></ul>' +
 						'</div>'
 					);
-					for (var i = 0; i< d.p.list.images.length; i++) {
-						var proImgsrc = d.p.list.images[i];
-						var proImgwidth = parseInt(getRetinaImgSize(screenWidth)>=828? 828:getRetinaImgSize(screenWidth));
-						var proImgheight = parseInt(proImgwidth*0.859375+1);
-						var proImgsize = '_' + proImgwidth + 'x' + proImgheight;
-						var proImgtruesrc = 'http://happyin-10041765.file.myqcloud.com/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
 
-						$('.slides').append('' +
-							'<li class="ps-li">' +
-								'<img alt="" src="'+ proImgtruesrc +'" width="100%">' +
-							'</li>')
-					}
-					flexSlider();
+
+					addImg(d);
+					/*for (var i = 0; i< d.p.list.images.length; i++) {
+						//$('.slides').append('<li class="ps-li"><img alt="" src="' + proImgtruesrc + '" width="100%"></li>');
+					}*/
+
 				}else {
 					for (var i = 0; i< d.p.list.images.length; i++) {
 						var proImgsrc = d.p.list.images[i];
 						var proImgwidth = parseInt(getRetinaImgSize(screenWidth)>=828? 828:getRetinaImgSize(screenWidth));
 						var proImgheight = parseInt(proImgwidth * 0.859375+1);
 						var proImgsize = '_' + proImgwidth + 'x' + proImgheight;
-						var proImgtruesrc = 'http://happyin-10041765.file.myqcloud.com/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
+						var proImgtruesrc = 'http://'+ imgDownloadDomain +'/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
 						$('.ps-cover-back').append('<img alt="" src="' + proImgtruesrc + '" width="100%">');
 					}
 				}
 
 				if (environment.isWeixin) {
-					var shareImgUrl = 'http://happyin-10041765.file.myqcloud.com/' + d.p.list.images[0].split('.')[0] + '_300x300.' + d.p.list.images[0].split('.')[1];
+					var shareImgUrl = 'http://'+ imgDownloadDomain +'/' + d.p.list.images[0].split('.')[0] + '_300x300.' + d.p.list.images[0].split('.')[1];
 					getJsSdkData(shareImgUrl);
 				}
 
@@ -207,7 +235,7 @@ $(function(){
 			alertSomething('获取失败，请稍后再试。(e:20002)');
 		}
 	})
-});
+}
 
 
 //微信jssdk
@@ -316,6 +344,22 @@ function getJsSdkData(imgUrl) {
 		}
 	});
 }
+
+$(function(){
+	$.ajax({
+		url:location.protocol + '//' + location.host + '/Catalog/System/getDomainInfo',
+		dataType: 'json',
+		data:{},
+		success: function(d){
+			imgDownloadDomain = d.p.download_domain;
+			buildDom();
+		},
+		error: function(){
+
+		}
+	});
+
+});
 
 
 
