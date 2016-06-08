@@ -14,6 +14,8 @@ var environment = {
 	isWinPhone: (ua.indexOf('Windows Phone') > -1)
 };
 
+var microDownloadUrl = 'https://appsto.re/cn/oVovcb.i';	//微下载地址
+
 //各平台登陆appId
 var appId = {
 	'isQq': '101308522',
@@ -370,6 +372,7 @@ function setResult(title,count,unit,code) {
 		$('.cp-resultbtn-box').css({'-webkit-transform':'scale3d(0.97,0.97,1)','transform':'scale3d(0.97,0.97,1)'});
 	}).on('touchend',function(){
 		$('.cp-resultbtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
+		location.href = microDownloadUrl;
 		//todo
 	});
 }

@@ -49,6 +49,8 @@ function getQueryStringArgs() {
 	return args;
 }
 
+var microDownloadUrl = 'https://appsto.re/cn/oVovcb.i';	//微下载地址
+
 function flexSlider() {
 	$(".flexslider").flexslider({
 		animation: 'slide',				//滑动

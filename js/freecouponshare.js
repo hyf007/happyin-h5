@@ -22,6 +22,8 @@ var appId = {
 	'isWeibo': '3366847509'
 };
 
+var microDownloadUrl = 'https://appsto.re/cn/oVovcb.i';	//微下载地址
+
 //获取查询字符串参数
 function getQueryStringArgs() {
 	var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
@@ -55,10 +57,12 @@ $(function(){
 		$('.fcs-receivebtn-box').css({'-webkit-transform':'scale3d(0.97,0.97,1)','transform':'scale3d(0.97,0.97,1)'});
 	}).on('touchend',function(){
 		$('.fcs-receivebtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
+		location.href = microDownloadUrl;
 		//todo
 	});
 
 	$('.fcs-banner-btn').on('touchend',function(){
+		location.href = microDownloadUrl;
 		//todo
 	});
 });
