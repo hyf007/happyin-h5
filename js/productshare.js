@@ -349,6 +349,10 @@ function getJsSdkData(imgUrl) {
 }
 
 $(function(){
+	$('.banner-btn').on('touchend',function(){
+		location.href = microDownloadUrl;
+	});
+
 	$.ajax({
 		url:location.protocol + '//' + location.host + '/Catalog/System/getDomainInfo',
 		dataType: 'json',

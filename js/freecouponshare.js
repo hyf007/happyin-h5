@@ -49,6 +49,10 @@ $(function(){
 	var per = screenWidth/320;
 	$('html').css('font-size', (0.625 * per) * 100 + '%');
 
+	$('.banner-btn').on('touchend',function(){
+		location.href = microDownloadUrl;
+	});
+
 	if (environment.isWeixin) {
 		getJsSdkData();
 	}

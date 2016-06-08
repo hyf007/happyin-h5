@@ -204,6 +204,9 @@ function getJsSdkData() {
 
 var redirectUrl = '';
 $(function () {
+	$('.banner-btn').on('touchend',function(){
+		location.href = microDownloadUrl;
+	});
 	//回调地址
 	redirectUrl = location.protocol + '//' + location.host + '/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target;
 
