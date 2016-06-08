@@ -22,7 +22,7 @@ var appId = {
 	'isWeibo': '3366847509'
 };
 
-var microDownloadUrl = 'https://appsto.re/cn/oVovcb.i';	//微下载地址
+var microDownloadUrl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.happyin.print';	//微下载地址
 
 //获取查询字符串参数
 function getQueryStringArgs() {

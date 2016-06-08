@@ -14,7 +14,7 @@ var environment = {
 	isWinPhone: (ua.indexOf('Windows Phone') > -1)
 };
 
-var microDownloadUrl = 'https://appsto.re/cn/oVovcb.i';	//微下载地址
+var microDownloadUrl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.happyin.print';	//微下载地址
 
 //各平台登陆appId
 var appId = {
