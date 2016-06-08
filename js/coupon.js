@@ -300,6 +300,7 @@ function buildDom(data){
 							alertSomething('手机号重复领取');
 							$('.cp-input').val('').blur();
 						}else {
+							$('.cp-input').val('').blur();
 							$('.cp-back-receive').css('display','none');
 							if(d.p.all_received == true) {
 								$('.cp-back-end').css('display','block');
