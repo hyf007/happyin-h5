@@ -140,6 +140,7 @@ function addImg(d) {
 		})
 	}else {
 		flexSlider();
+		$('.flexslider').css('opacity','1');
 	}
 }
 
