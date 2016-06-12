@@ -78,7 +78,7 @@ function getJsSdkData() {
 		'title': '对不起！让您花钱洗了这么多年照片',
 		'desc': '终身免费手机照片冲印APP',
 		'link': location.protocol + '//' + location.host + '/order/freecouponshare.html?target=appShare',
-		'imgUrl': 'http://hipubdev-10006628.file.myqcloud.com/admin/images/logo.jpg'
+		'imgUrl': 'http://happyin-10041765.file.myqcloud.com/admin/images/logo.jpg'
 	};
 
 

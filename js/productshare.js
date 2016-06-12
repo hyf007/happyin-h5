@@ -4,6 +4,7 @@
 'use strict';
 
 var pokoConsole = true;
+var version = 2;
 
 var screenWidth = $(window).width();  //屏幕宽度
 var screenHeight = $(window).height(); //屏幕高度
@@ -356,7 +357,10 @@ $(function(){
 	$.ajax({
 		url:location.protocol + '//' + location.host + '/Catalog/System/getDomainInfo',
 		dataType: 'json',
-		data:{},
+		data:{
+			version: version,
+			platform: 2
+		},
 		success: function(d){
 			imgDownloadDomain = d.p.download_domain;
 			buildDom();

@@ -224,7 +224,7 @@ $(function () {
 		}
 
 	//weixin登陆 测试环境
-	}else if(environment.isWeixin && location.host == 'dev.happyin.com.cn:9969') {
+	}else if(environment.isWeixin && location.host == 'dev.happyin.com.cn') {
 		getJsSdkData();
 		if (!environment.isLogin && loginToken == '') {
 			location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appId.isWeixinTest + '&redirect_uri=' + encodeURIComponent(redirectUrl) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
