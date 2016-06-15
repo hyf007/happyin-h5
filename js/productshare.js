@@ -350,7 +350,7 @@ function getJsSdkData(imgUrl) {
 }
 
 $(function(){
-	$('.banner-btn').on('touchend',function(e){
+	$('.banner-btn').on('click',function(e){
 		e.preventDefault();
 		location.href = microDownloadUrl;
 	});

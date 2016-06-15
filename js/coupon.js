@@ -204,7 +204,7 @@ function getJsSdkData() {
 
 var redirectUrl = '';
 $(function () {
-	$('.banner-btn').on('touchend',function(){
+	$('.banner-btn').on('click',function(){
 		location.href = microDownloadUrl;
 	});
 	//回调地址
@@ -276,8 +276,9 @@ function buildDom(data){
 
 	$('.cp-btn-receive').on('touchstart',function(){
 		$('.cp-receivebtn-box').css({'-webkit-transform':'scale3d(0.97,0.97,1)','transform':'scale3d(0.97,0.97,1)'});
-	}).on('touchend',function(){
-		$('.cp-receivebtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
+	}).on('touchend',function() {
+		$('.cp-receivebtn-box').css({'-webkit-transform': 'scale3d(1,1,1)', 'transform': 'scale3d(1,1,1)'});
+	}).on('click',function(){
 		var inputTelephone = $('.cp-input').val();
 		var reg = /1[345678]{1}\d{9}$/;
 		if(reg.test(inputTelephone)) {
@@ -376,8 +377,9 @@ function setResult(title,count,unit,code) {
 		$('.cp-resultbtn-box').css({'-webkit-transform':'scale3d(0.97,0.97,1)','transform':'scale3d(0.97,0.97,1)'});
 	}).on('touchend',function(){
 		$('.cp-resultbtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
+	}).on('click',function(){
 		location.href = microDownloadUrl;
-	});
+	})
 }
 
 function alertSomething(content) {
