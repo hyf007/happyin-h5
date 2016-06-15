@@ -62,12 +62,10 @@ $(function(){
 	}).on('touchend',function(){
 		$('.fcs-receivebtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
 		location.href = microDownloadUrl;
-		//todo
 	});
 
 	$('.fcs-banner-btn').on('touchend',function(){
 		location.href = microDownloadUrl;
-		//todo
 	});
 });
 

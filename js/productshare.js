@@ -217,7 +217,7 @@ function buildDom(){
 						var proImgheight = parseInt(proImgwidth * 0.859375+1);
 						var proImgsize = '_' + proImgwidth + 'x' + proImgheight;
 						var proImgtruesrc = 'http://'+ imgDownloadDomain +'/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
-						$('.ps-cover-back').append('<img alt="" src="' + proImgtruesrc + '" width="100%">');
+						$('.ps-cover-back').html('<img alt="" src="' + proImgtruesrc + '" width="100%">');
 					}
 				}
 
@@ -350,7 +350,8 @@ function getJsSdkData(imgUrl) {
 }
 
 $(function(){
-	$('.banner-btn').on('touchend',function(){
+	$('.banner-btn').on('touchend',function(e){
+		e.preventDefault();
 		location.href = microDownloadUrl;
 	});
 

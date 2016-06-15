@@ -377,7 +377,6 @@ function setResult(title,count,unit,code) {
 	}).on('touchend',function(){
 		$('.cp-resultbtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
 		location.href = microDownloadUrl;
-		//todo
 	});
 }
 
