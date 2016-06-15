@@ -1,7 +1,6 @@
 ﻿'use strict';
 
-var screenWidth = $(window).width();  //屏幕宽度
-var screenHeight = $(window).height(); //屏幕高度
+
 
 var ua = navigator.userAgent;
 //alert(ua);
@@ -45,9 +44,22 @@ function getQueryStringArgs() {
 	return args;
 }
 
-$(function(){
+function fnResize(){
+	var screenWidth = $(window).width();  //屏幕宽度
+	var screenHeight = $(window).height(); //屏幕高度
 	var per = screenWidth/320;
 	$('html').css('font-size', (0.625 * per) * 100 + '%');
+}
+
+
+$(function(){
+	fnResize();
+	window.addEventListener("resize", function() {
+		fnResize()
+	}, false);
+
+
+
 
 	$('.banner-btn').on('click',function(){
 		location.href = microDownloadUrl;

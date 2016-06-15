@@ -1,8 +1,5 @@
 ﻿'use strict';
 
-var screenWidth = $(window).width();  //屏幕宽度
-var screenHeight = $(window).height(); //屏幕高度
-
 var ua = navigator.userAgent;
 var environment = {
 	isWeixin: (/MicroMessenger/i).test(ua),
@@ -202,6 +199,13 @@ function getJsSdkData() {
 	});
 }
 
+function fnResize(){
+	var screenWidth = $(window).width();  //屏幕宽度
+	var screenHeight = $(window).height(); //屏幕高度
+	var per = screenWidth/320;
+	$('html').css('font-size', (0.625 * per) * 100 + '%');
+}
+
 var redirectUrl = '';
 $(function () {
 	$('.banner-btn').on('click',function(){
@@ -211,8 +215,10 @@ $(function () {
 	redirectUrl = location.protocol + '//' + location.host + '/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target;
 
 	//rem适应布局
-	var per = screenWidth/320;
-	$('html').css('font-size', (0.625 * per) * 100 + '%');
+	fnResize();
+	window.addEventListener("resize", function() {
+		fnResize()
+	}, false);
 
 	//QQ登陆
 	if(environment.isQq && environment.isWeixin == false) {
