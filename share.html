@@ -6,6 +6,24 @@
 	<title>快乐印Happyin</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
 	<meta name="format-detection" content="telephone=no">
+	<script type="text/javascript">
+		fnResize();
+		window.addEventListener("resize", function() {
+			fnResize()
+		}, false);
+
+		function fnResize(){
+			/*var screenWidth = $(window).width();  //屏幕宽度
+			 var screenHeight = $(window).height(); //屏幕高度
+			 var per = screenWidth/320;
+			 $('html').css('font-size', (0.625 * per) * 100 + '%');*/
+
+			var docWidth = document.documentElement.clientWidth,
+					body = document.getElementsByTagName('html')[0];
+			body.style.fontSize = (0.625 * (docWidth / 320) ) * 100 + '%';
+		}
+	</script>
+
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>

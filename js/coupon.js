@@ -199,12 +199,12 @@ function getJsSdkData() {
 	});
 }
 
-function fnResize(){
+/*function fnResize(){
 	var screenWidth = $(window).width();  //屏幕宽度
 	var screenHeight = $(window).height(); //屏幕高度
 	var per = screenWidth/320;
 	$('html').css('font-size', (0.625 * per) * 100 + '%');
-}
+}*/
 
 var redirectUrl = '';
 $(function () {
@@ -214,11 +214,11 @@ $(function () {
 	//回调地址
 	redirectUrl = location.protocol + '//' + location.host + '/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target;
 
-	//rem适应布局
+	/*//rem适应布局
 	fnResize();
 	window.addEventListener("resize", function() {
 		fnResize()
-	}, false);
+	}, false);*/
 
 	//QQ登陆
 	if(environment.isQq && environment.isWeixin == false) {
