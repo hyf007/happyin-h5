@@ -118,31 +118,59 @@ function getRetinaImgSize(size) {
 }
 
 var addImgIndex = 0;
-function addImg(d) {
+function addImg(d,mark) {
 	if(addImgIndex < d.p.list.images.length) {
 		var proImgsrc = d.p.list.images[addImgIndex];
 		var proImgwidth = parseInt(getRetinaImgSize(screenWidth)>=828? 828:getRetinaImgSize(screenWidth));
 		var proImgheight = parseInt(proImgwidth*0.859375+1);
 		var proImgsize = '_' + proImgwidth + 'x' + proImgheight;
+		var proImgorisrc = 'http://'+ imgDownloadDomain +'/' + proImgsrc.split('.')[0] + '.' + proImgsrc.split('.')[1];
 		var proImgtruesrc = 'http://'+ imgDownloadDomain +'/' + proImgsrc.split('.')[0] + proImgsize + '.' + proImgsrc.split('.')[1];
+
 
 		var oImg = new Image();
 		oImg.alt = '';
-		oImg.src = proImgtruesrc;
+		if(mark == 0) {
+			oImg.src = proImgtruesrc;
+		}else {
+			oImg.src = proImgorisrc;
+		}
 		$(oImg).attr('width','100%');
 		$(oImg).load(function(){
 			$('.slides').append('<li class="ps-li"></li>').find('li').last().append(this);
 			addImgIndex++;
-			addImg(d);
+			addImg(d,0);
 		});
 		$(oImg).error(function(){
-			addImgIndex++;
-			addImg(d);
+			if(mark != 0){
+				addImgIndex++;
+				addImg(d,0);
+			}else {
+				addImg(d,1);
+			}
 		})
 	}else {
 		flexSlider();
 		$('.flexslider').css('opacity','1');
 	}
+}
+
+//统计
+function forStat() {
+	$.ajax({
+		url: location.protocol + '//' + location.host + '/Catalog/Stat/shareStat',
+		dataType: 'text',
+		data: {
+			stat: 1,
+			target: getQueryStringArgs().target
+		},
+		success: function(d){
+
+		},
+		error: function(e){
+
+		}
+	});
 }
 
 function buildDom(){
@@ -154,15 +182,13 @@ function buildDom(){
 		$('html').css('font-size', (0.625 * per) * 100 + '%');
 	}
 
-
+	forStat();
 	$.ajax ({
 		//url: 'http://119.29.77.36:9967/Catalog/Catalog/detail',
 		url: location.protocol + '//' + location.host + '/Catalog/Catalog/detail',
 		dataType: 'json',
 		data: {
-			product_id: getQueryStringArgs().productId,
-			stat: 1,
-			target: getQueryStringArgs().target
+			product_id: getQueryStringArgs().productId
 		},
 		success: function(d){
 			if (pokoConsole) {
@@ -207,7 +233,7 @@ function buildDom(){
 					);
 
 
-					addImg(d);
+					addImg(d,0);
 					/*for (var i = 0; i< d.p.list.images.length; i++) {
 						//$('.slides').append('<li class="ps-li"><img alt="" src="' + proImgtruesrc + '" width="100%"></li>');
 					}*/

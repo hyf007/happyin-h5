@@ -45,8 +45,27 @@ function getQueryStringArgs() {
 //获取cookie用于快速登陆
 var loginToken = $.cookie('LoginToken')==undefined? '': $.cookie('LoginToken');
 
+//统计
+function forStat() {
+	$.ajax({
+		url: location.protocol + '//' + location.host + '/Catalog/Stat/shareStat',
+		dataType: 'text',
+		data: {
+			stat: 1,
+			target: getQueryStringArgs().target
+		},
+		success: function(d){
+
+		},
+		error: function(e){
+
+		}
+	});
+}
+
 //注册环节
 function webRegister(type){
+	forStat();
 	console.log('loginToken:'+loginToken);
 	//alert('type:' + type + ';code:' + getQueryStringArgs().code + ';ident:' + getQueryStringArgs().ident + ';token:'+loginToken);
 	$.ajax({
@@ -56,9 +75,7 @@ function webRegister(type){
 			type: type,
 			code: getQueryStringArgs().code,
 			ident: getQueryStringArgs().ident,
-			token: loginToken,
-			stat: 1,
-			target: getQueryStringArgs().target
+			token: loginToken
 		},
 		success: function(d){
 			//alert('成功');

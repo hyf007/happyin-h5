@@ -30,7 +30,7 @@ function checkTel(str, str2) {
 	var s = str +' ';
 	var arr = s.split(str2);
 	if(arr.length < 2) {return str;}
-	if(arr[1][0] == ':' || arr[1][0] == '：'){
+	if(arr[1][0] == ':' || arr[1][0] == '：' || arr[1][0] == '/'){
 		var n = [];
 		for(var i=1; i<arr[1].length; i++){
 			if( (!isNaN(arr[1][i]) && arr[1][i] != ' ') || (arr[1][i] == '-' && !isNaN(arr[1][i+1]) && arr[1][i+1] != ' ') ){
