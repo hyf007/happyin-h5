@@ -46,10 +46,11 @@ function getQueryStringArgs() {
 
 function forStat() {
 	$.ajax({
-		url: '',		//todo add url
-		dataType: 'json',
+		url: location.protocol + '//' + location.host + '/Catalog/Stat/shareStat',
+		dataType: 'text',
 		data: {
-			stat: 1
+			stat: 1,
+			target: getQueryStringArgs().target
 		},
 		success: function(d){
 

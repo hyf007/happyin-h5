@@ -161,7 +161,8 @@ function buildDom(){
 		dataType: 'json',
 		data: {
 			product_id: getQueryStringArgs().productId,
-			stat: 1
+			stat: 1,
+			target: getQueryStringArgs().target
 		},
 		success: function(d){
 			if (pokoConsole) {
