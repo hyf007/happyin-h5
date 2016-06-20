@@ -44,10 +44,26 @@ function getQueryStringArgs() {
 	return args;
 }
 
+function forStat() {
+	$.ajax({
+		url: '',		//todo add url
+		dataType: 'json',
+		data: {
+			stat: 1
+		},
+		success: function(d){
 
+		},
+		error: function(e){
+
+		}
+	});
+}
 
 
 $(function(){
+	forStat();
+
 	$('.banner-btn').on('click',function(){
 		location.href = microDownloadUrl;
 	});

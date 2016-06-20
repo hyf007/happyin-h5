@@ -56,7 +56,8 @@ function webRegister(type){
 			type: type,
 			code: getQueryStringArgs().code,
 			ident: getQueryStringArgs().ident,
-			token: loginToken
+			token: loginToken,
+			stat: 1
 		},
 		success: function(d){
 			//alert('成功');

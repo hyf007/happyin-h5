@@ -136,8 +136,8 @@ function addImg(d) {
 			addImg(d);
 		});
 		$(oImg).error(function(){
-			i++;
-			addImg();
+			addImgIndex++;
+			addImg(d);
 		})
 	}else {
 		flexSlider();
@@ -160,7 +160,8 @@ function buildDom(){
 		url: location.protocol + '//' + location.host + '/Catalog/Catalog/detail',
 		dataType: 'json',
 		data: {
-			product_id: getQueryStringArgs().productId
+			product_id: getQueryStringArgs().productId,
+			stat: 1
 		},
 		success: function(d){
 			if (pokoConsole) {
