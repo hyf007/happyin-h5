@@ -62,4 +62,8 @@
 .helpcenter-content-box .helpcenter-content {
 	font-size: 14px;
 	line-height: 22px;
+	-webkit-user-select: auto;
+	-moz-user-select: element;
+	-ms-user-select: element;
+	user-select: element;
 }
