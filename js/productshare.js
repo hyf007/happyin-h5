@@ -142,12 +142,8 @@ function addImg(d,mark) {
 			addImg(d,0);
 		});
 		$(oImg).error(function(){
-			if(mark != 0){
-				addImgIndex++;
-				addImg(d,0);
-			}else {
-				addImg(d,1);
-			}
+			addImgIndex++;
+			addImg(d,0);
 		})
 	}else {
 		flexSlider();
