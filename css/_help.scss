@@ -51,12 +51,20 @@
 	/*border-top: none;*/
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
+	-webkit-user-select: auto;
+	-moz-user-select: element;
+	-ms-user-select: element;
+	user-select: element;
 }
 
 .helpcenter-li .helpcenter-content-box {
 	background: #ffffff;
 	padding: 10px 25px;
 	position: relative;
+	-webkit-user-select: auto;
+	-moz-user-select: element;
+	-ms-user-select: element;
+	user-select: element;
 }
 
 .helpcenter-content-box .helpcenter-content {
