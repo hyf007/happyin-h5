@@ -51,6 +51,21 @@ function getQueryStringArgs() {
 }
 
 var microDownloadUrl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.happyin.print';	//微下载地址
+function toMicroDownload(){
+	$.ajax({
+		url: location.protocol + '//' + location.host + '/Catalog/Stat/shareDow',
+		dataType: 'text',
+		data: {
+			target: getQueryStringArgs().target
+		},
+		success: function(d){
+			location.href = microDownloadUrl;
+		},
+		error: function(e){
+			location.href = microDownloadUrl;
+		}
+	});
+}
 
 function flexSlider() {
 	$(".flexslider").flexslider({
@@ -376,7 +391,7 @@ function getJsSdkData(imgUrl) {
 $(function(){
 	$('.banner-btn').on('click',function(e){
 		e.preventDefault();
-		location.href = microDownloadUrl;
+		toMicroDownload();
 	});
 
 	$.ajax({

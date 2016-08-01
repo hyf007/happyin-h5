@@ -12,6 +12,21 @@ var environment = {
 };
 
 var microDownloadUrl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.happyin.print';	//微下载地址
+function toMicroDownload(){
+	$.ajax({
+		url: location.protocol + '//' + location.host + '/Catalog/Stat/shareDow',
+		dataType: 'text',
+		data: {
+			target: getQueryStringArgs().target
+		},
+		success: function(d){
+			location.href = microDownloadUrl;
+		},
+		error: function(e){
+			location.href = microDownloadUrl;
+		}
+	});
+}
 
 //各平台登陆appId
 var appId = {
@@ -228,7 +243,7 @@ function getJsSdkData() {
 var redirectUrl = '';
 $(function () {
 	$('.banner-btn').on('click',function(){
-		location.href = microDownloadUrl;
+		toMicroDownload();
 	});
 	//回调地址
 	redirectUrl = location.protocol + '//' + location.host + '/order/coupon.html?ident=' + getQueryStringArgs().ident + '&target=' + getQueryStringArgs().target;
@@ -403,7 +418,7 @@ function setResult(title,count,unit,code) {
 	}).on('touchend',function(){
 		$('.cp-resultbtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
 	}).on('click',function(){
-		location.href = microDownloadUrl;
+		toMicroDownload();
 	})
 }
 

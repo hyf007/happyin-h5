@@ -22,6 +22,23 @@ var appId = {
 };
 
 var microDownloadUrl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.happyin.print';	//微下载地址
+function toMicroDownload(){
+	$.ajax({
+		url: location.protocol + '//' + location.host + '/Catalog/Stat/shareDow',
+		dataType: 'text',
+		data: {
+			target: getQueryStringArgs().target
+		},
+		success: function(d){
+			//console.log(d);
+			location.href = microDownloadUrl;
+		},
+		error: function(e){
+			//console.log(e);
+			location.href = microDownloadUrl;
+		}
+	});
+}
 
 //获取查询字符串参数
 function getQueryStringArgs() {
@@ -66,7 +83,7 @@ $(function(){
 	forStat();
 
 	$('.banner-btn').on('click',function(){
-		location.href = microDownloadUrl;
+		toMicroDownload();
 	});
 
 	if (environment.isWeixin) {
@@ -78,11 +95,11 @@ $(function(){
 	}).on('touchend',function(){
 		$('.fcs-receivebtn-box').css({'-webkit-transform':'scale3d(1,1,1)','transform':'scale3d(1,1,1)'});
 	}).on('click',function(){
-		location.href = microDownloadUrl;
+		toMicroDownload();
 	});
 
 	$('.fcs-banner-btn').on('touchend',function(){
-		location.href = microDownloadUrl;
+		toMicroDownload();
 	});
 });
 
