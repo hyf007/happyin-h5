@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<title>快乐印Happyin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
+	<meta name="format-detection" content="telephone=no">
+	<script type="text/javascript">
+		fnResize();
+		window.addEventListener("resize", function() {
+			fnResize()
+		}, false);
+
+		function fnResize(){
+			/*var screenWidth = $(window).width();  //屏幕宽度
+			var screenHeight = $(window).height(); //屏幕高度
+			var per = screenWidth/320;
+			$('html').css('font-size', (0.625 * per) * 100 + '%');*/
+
+			var docWidth = document.documentElement.clientWidth,
+			 body = document.getElementsByTagName('html')[0];
+			 body.style.fontSize = (0.625 * (docWidth / 320) ) * 100 + '%';
+		}
+	</script>
+
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="js/channelshare.js"></script>
+	<style>
+		html {
+			background: #ffd600;
+		}
+	</style>
+</head>
+<body>
+	<!--标题框-->
+	<div class="fcs-back-title">
+		<img class="fcs-back-hideimg" alt="" src="http://happyin-10041765.file.myqcloud.com/admin/images/logo.jpg">
+		<img alt="" src="images/coupon/freecoupon_backimg_title.jpg" width="100%">
+	</div>
+
+	<!--未领取且有剩余-->
+	<div class="fcs-back-receive">
+		<img alt="" src="images/coupon/coupon_backimg_center.jpg" width="100%">
+		<div class="fcs-receivebtn-box">
+			<img alt="" src="images/coupon/coupon_btnimg_01.gif" width="100%">
+			<a href="javascript:void(0)" class="fcs-btn-receive"></a>
+		</div>
+	</div>
+
+	<!--底部推荐-->
+	<div class="fcs-back-spread">
+		<img alt="" src="images/coupon/coupon_backimg_bottom01.jpg" width="100%">
+		<div class="fcs-back-productbox">
+			<img alt="" src="images/coupon/coupon_backimg_bottom02.jpg" width="100%">
+			<a class="fcs-back-productbtn" href="javascript:;"></a>
+		</div>
+		<div class="fcs-back-productbox">
+			<img alt="" src="images/coupon/coupon_backimg_bottom03.jpg" width="100%">
+			<a class="fcs-back-productbtn" href="javascript:;"></a>
+		</div>
+		<div class="fcs-back-productbox">
+			<img alt="" src="images/coupon/coupon_backimg_bottom04.jpg" width="100%">
+			<a class="fcs-back-productbtn" href="javascript:;"></a>
+		</div>
+		<img alt="" src="images/coupon/coupon_backimg_bottomline.jpg" width="100%">
+	</div>
+
+	<!--底部框-->
+	<div class="banner-box">
+		<img class="banner-left" alt="" src="images/banner_left.png" height="100%">
+		<img class="banner-right" alt="" src="images/banner_right.png" height="100%">
+		<a href="javascript:void(0)" class="banner-btn"></a>
+	</div>
+
+<script>
+	(function()	{
+		var agent = navigator.userAgent;        //检测是否是ios
+		var iLastTouch = null;                                //缓存上一次tap的时间
+		if (agent.indexOf('Mac') > -1 && agent.indexOf('Mobile') > -1) {
+			document.body.addEventListener('touchend', function(event) {
+				var iNow = new Date().getTime();
+				iLastTouch = iLastTouch || iNow + 1;
+				var delta = iNow - iLastTouch;
+				if (delta < 500 && delta > 0) {
+					event.preventDefault();
+					return false;
+				}
+				iLastTouch = iNow;
+			}, false);
+		}
+	})();
+</script>
+</body>
+</html>
