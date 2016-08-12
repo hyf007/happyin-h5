@@ -1,0 +1,54 @@
+@charset "utf-8";
+@import "base";			//默认样式
+
+@function rem($px) {
+	@return $px*(1/20)*1rem;
+}
+
+.text1{
+	margin-bottom: rem(100);
+}
+
+.text2{
+	margin-bottom: rem(300);
+}
+
+.btn-box{
+	width: 100%;
+	height: rem(116);
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	border-top: rem(4) solid #000000;
+	background: #ffffff;
+
+	div{
+		width: 100%;
+		height: rem(130);
+		position: absolute;
+		left: 0;
+		bottom: rem(120);
+		background: #ffffff;
+	}
+
+	.btn1{
+		position: absolute;
+		left: 0;
+		bottom: 0;
+	}
+
+	.btn2{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+	}
+
+	a{
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+	}
+}

@@ -34,11 +34,11 @@ var downloadHref = '';
 var phone;
 if(environment.isAndroid){
 	downloadHref = 'http://happyin-10041765.file.myqcloud.com/apk/toutiao-release-1.0.7.apk';
-	phone = 'android';
+	phone = 'a';
 }
 if(environment.isIos){
 	downloadHref = 'https://api.happyin.com.cn/Catalog/Stat/adClick?d=59d40fe4&t=59d40fe4-5ba5-4a1b-a195-1dd238901b90';
-	phone = 'ios';
+	phone = 'i';
 }
 
 //var microDownloadUrl = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.happyin.print';	//微下载地址
@@ -47,8 +47,7 @@ function toDownload(){
 		url: location.protocol + '//' + location.host + '/Catalog/Stat/shareDow',
 		dataType: 'text',
 		data: {
-			target: getQueryStringArgs().channel,
-			phone: phone
+			target: getQueryStringArgs().channel + '_' + phone
 		},
 		success: function(d){
 			//console.log(d);
@@ -67,8 +66,7 @@ function forStat() {
 		dataType: 'text',
 		data: {
 			stat: 1,
-			target: getQueryStringArgs().channel,
-			phone: phone
+			target: getQueryStringArgs().channel + '_' + phone
 		},
 		success: function(d){
 

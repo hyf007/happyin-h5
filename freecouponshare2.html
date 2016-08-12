@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<title>快乐印Happyin</title>
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
+	<meta name="format-detection" content="telephone=no">
+	<script type="text/javascript">
+		fnResize();
+		window.addEventListener("resize", function() {
+			fnResize()
+		}, false);
+
+		function fnResize(){
+			var docWidth = document.documentElement.clientWidth,
+					body = document.getElementsByTagName('html')[0];
+			body.style.fontSize = (0.625 * (docWidth / 320) ) * 100 + '%';
+		}
+	</script>
+
+	<link rel="stylesheet" href="css/freecouponshare2.css">
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="js/freecouponshare2.js"></script>
+</head>
+<body>
+	<img class="text1" src="images/coupon2/text1.png" width="100%">
+	<img class="text2" src="images/coupon2/text2.png" width="100%">
+
+	<div class="btn-box clearfix">
+		<div>
+			<img class="text3" src="images/coupon2/text3.png" width="100%">
+		</div>
+		<img class="btn1" src="images/coupon2/btn1.png" height="100%">
+		<img class="btn2" src="images/coupon2/btn2.png" height="100%">
+		<a class="banner-btn" href="javascript:;"></a>
+	</div>
+</body>
+</html>
