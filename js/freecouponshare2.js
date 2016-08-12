@@ -97,7 +97,7 @@ function getJsSdkData() {
 		'title': '这个情感冷漠的社会，为什么大家都不洗照片了？',
 		'desc': '家人围坐一起翻相册的温暖时光去哪儿了',
 		'link': location.protocol + '//' + location.host + '/order/freecouponshare2.html?target=bannerShare',
-		'imgUrl': 'http://happyin-10041765.file.myqcloud.com/admin/images/bannershare.jpg'
+		'imgUrl': 'http://happyin-10041765.file.myqcloud.com/admin/images/logo.jpg'
 	};
 
 
