@@ -286,7 +286,7 @@ function getJsSdkData(imgUrl) {
 	var weixinShareJson = {
 		'title': '我在Happyin上发现了一件商品，很符合你的气质',
 		'desc': '终身免费手机照片冲印APP',
-		'link': location.protocol + '//' + location.host + '/order/productshare.html?productId=' + getQueryStringArgs().productId + '&target=product',
+		'link': location.protocol + '//' + location.host + '/order/productshare.html?productId=' + getQueryStringArgs().productId + '&target=' + getQueryStringArgs().target,
 		'imgUrl': imgUrl
 	};
 
