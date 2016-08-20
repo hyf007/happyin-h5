@@ -59,10 +59,28 @@ function toMicroDownload(){
 			target: getQueryStringArgs().target
 		},
 		success: function(d){
-			location.href = microDownloadUrl;
+			if(environment.isWeibo){
+				if(environment.isAndroid){
+					$('.back-cover').show();
+				}
+				if(environment.isIos){
+					$('.back-cover').show().find('p i').html('用Safari打开');
+				}
+			}else{
+				location.href = microDownloadUrl;
+			}
 		},
 		error: function(e){
-			location.href = microDownloadUrl;
+			if(environment.isWeibo){
+				if(environment.isAndroid){
+					$('.back-cover').show();
+				}
+				if(environment.isIos){
+					$('.back-cover').show().find('p i').html('用Safari打开');
+				}
+			}else{
+				location.href = microDownloadUrl;
+			}
 		}
 	});
 }
@@ -194,6 +212,7 @@ function buildDom(){
 	}
 
 	forStat();
+	$('.back-cover').click(function(){$(this).hide();});
 	$.ajax ({
 		//url: 'http://119.29.77.36:9967/Catalog/Catalog/detail',
 		url: location.protocol + '//' + location.host + '/Catalog/Catalog/detail',

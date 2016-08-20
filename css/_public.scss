@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+@function rem($px) {
+	@return $px*(1/20)*1rem;
+}
+
 .banner-box {
 	width: 100%;
 	height: 46px;
@@ -87,6 +91,41 @@
 		}
 	}
 
+}
+
+.back-cover{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 999;
+
+	img{
+		width: rem(118);
+		position: absolute;
+		top: rem(20);
+		right: rem(70);
+	}
+
+	p{
+		width: 100%;
+		height: rem(30);
+		position: absolute;
+		top: rem(200);
+		left: 0;
+		text-align: center;
+		line-height: rem(30);
+		font-size: rem(28);
+		font-weight: bold;
+		color: #edbb19;
+
+		i{
+			color: #ffffff;
+		}
+	}
 }
 
 

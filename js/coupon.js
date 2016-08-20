@@ -20,10 +20,28 @@ function toMicroDownload(){
 			target: getQueryStringArgs().target
 		},
 		success: function(d){
-			location.href = microDownloadUrl;
+			if(environment.isWeibo){
+				if(environment.isAndroid){
+					$('.back-cover').show();
+				}
+				if(environment.isIos){
+					$('.back-cover').show().find('p i').html('用Safari打开');
+				}
+			}else{
+				location.href = microDownloadUrl;
+			}
 		},
 		error: function(e){
-			location.href = microDownloadUrl;
+			if(environment.isWeibo){
+				if(environment.isAndroid){
+					$('.back-cover').show();
+				}
+				if(environment.isIos){
+					$('.back-cover').show().find('p i').html('用Safari打开');
+				}
+			}else{
+				location.href = microDownloadUrl;
+			}
 		}
 	});
 }
@@ -81,6 +99,7 @@ function forStat() {
 //注册环节
 function webRegister(type){
 	forStat();
+	$('.back-cover').click(function(){$(this).hide();});
 	console.log('loginToken:'+loginToken);
 	//alert('type:' + type + ';code:' + getQueryStringArgs().code + ';ident:' + getQueryStringArgs().ident + ';token:'+loginToken);
 	$.ajax({

@@ -7,6 +7,18 @@
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
 	<meta name="format-detection" content="telephone=no">
+	<script type="text/javascript">
+		fnResize();
+		window.addEventListener("resize", function() {
+			fnResize()
+		}, false);
+
+		function fnResize(){
+			var docWidth = document.documentElement.clientWidth,
+					body = document.getElementsByTagName('html')[0];
+			body.style.fontSize = (0.625 * (docWidth / 320) ) * 100 + '%';
+		}
+	</script>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/flexslider.css">
 	<script src="js/jquery-2.1.4.min.js"></script>
@@ -50,6 +62,12 @@
 			</div>
 			<a class="alert-btn" href="javascript:void(0)">确定</a>
 		</div>
+	</div>
+
+	<!--微博内提示点击右上角-->
+	<div class="back-cover">
+		<img alt="" src="images/tosafari.png">
+		<p>点击右上角···选择<i>用浏览器打开</i></p>
 	</div>
 </body>
 </html>

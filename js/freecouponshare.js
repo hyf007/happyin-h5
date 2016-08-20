@@ -31,11 +31,29 @@ function toMicroDownload(){
 		},
 		success: function(d){
 			//console.log(d);
-			location.href = microDownloadUrl;
+			if(environment.isWeibo){
+				if(environment.isAndroid){
+					$('.back-cover').show();
+				}
+				if(environment.isIos){
+					$('.back-cover').show().find('p i').html('用Safari打开');
+				}
+			}else{
+				location.href = microDownloadUrl;
+			}
 		},
 		error: function(e){
 			//console.log(e);
-			location.href = microDownloadUrl;
+			if(environment.isWeibo){
+				if(environment.isAndroid){
+					$('.back-cover').show();
+				}
+				if(environment.isIos){
+					$('.back-cover').show().find('p i').html('用Safari打开');
+				}
+			}else{
+				location.href = microDownloadUrl;
+			}
 		}
 	});
 }
@@ -81,6 +99,7 @@ function forStat() {
 
 $(function(){
 	forStat();
+	$('.back-cover').click(function(){$(this).hide();});
 
 	$('.banner-btn').on('click',function(){
 		toMicroDownload();

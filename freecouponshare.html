@@ -13,11 +13,6 @@
 		}, false);
 
 		function fnResize(){
-			/*var screenWidth = $(window).width();  //屏幕宽度
-			var screenHeight = $(window).height(); //屏幕高度
-			var per = screenWidth/320;
-			$('html').css('font-size', (0.625 * per) * 100 + '%');*/
-
 			var docWidth = document.documentElement.clientWidth,
 			 body = document.getElementsByTagName('html')[0];
 			 body.style.fontSize = (0.625 * (docWidth / 320) ) * 100 + '%';
@@ -73,6 +68,12 @@
 		<img class="banner-left" alt="" src="images/banner_left.png" height="100%">
 		<img class="banner-right" alt="" src="images/banner_right.png" height="100%">
 		<a href="javascript:void(0)" class="banner-btn"></a>
+	</div>
+
+	<!--微博内提示点击右上角-->
+	<div class="back-cover">
+		<img alt="" src="images/tosafari.png">
+		<p>点击右上角···选择<i>用浏览器打开</i></p>
 	</div>
 
 <script>
