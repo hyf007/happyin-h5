@@ -89,12 +89,15 @@ connectWebViewJavascriptBridge(function(bridge) {
 				//$('body').append('<p style="width: 100%;">'+ p +'</p>');
 				var shareLimit = d.p.shareFree_limit;
 				var receiveState;
+				$('html').css('background','#ffd600');
 				if(!user_vip){
+					$('.freecoupon-title').show();
 					$('.freecoupon-back-isvip').hide();
 					$('.freecoupon-back-isnotvip').show();
 					receiveState = true;
 				}else {
 					receiveState = d.p.receive_state;
+					$('.freecoupon-title').show();
 					if(receiveState){
 						$('.freecoupon-back-isvip').hide();
 						$('.freecoupon-back-isnotvip').show();
